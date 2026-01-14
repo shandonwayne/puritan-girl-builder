@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="26" fill="none" viewBox="0 0 40 26">
+  <defs>
+    <filter id="faceTexture" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feTurbulence type="fractalNoise" baseFrequency="0.38100969791412354 0.38100969791412354" numOctaves="3" seed="4240" />
+      <feDisplacementMap in="shape" scale="2.831524133682251" xChannelSelector="R" yChannelSelector="G" result="displacedImage" width="100%" height="100%" />
+      <feMerge>
+        <feMergeNode in="displacedImage"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <g class="face" transform="translate(0, -10)">
+    <g class="eyes">
+      <g class="Vector 1681">
+        <path stroke="#1A1A1A" stroke-linecap="round" stroke-width="6.534" d="m36.498 11.655-6.023 2.002"/>
+        <path stroke="#5A0000" stroke-linecap="round" stroke-opacity=".2" stroke-width="6.534" d="m36.498 11.655-6.023 2.002" style="mix-blend-mode:multiply"/>
+      </g>
+      <g class="Vector 1682">
+        <path stroke="#1A1A1A" stroke-linecap="round" stroke-width="6.534" d="m3.268 11.653 6.024 2.002"/>
+        <path stroke="#5A0000" stroke-linecap="round" stroke-opacity=".2" stroke-width="6.534" d="m3.268 11.653 6.024 2.002" style="mix-blend-mode:multiply"/>
+      </g>
+    </g>
+    <g class="eyerbrow" filter="url(#faceTexture)">
+      <g class="Vector 1679">
+        <path stroke="#E8B2AB" stroke-linecap="round" stroke-width="6.534" d="m35.008 3.468-4.68-.15"/>
+        <path stroke="#5A0000" stroke-linecap="round" stroke-opacity=".2" stroke-width="6.534" d="m35.008 3.468-4.68-.15" style="mix-blend-mode:multiply"/>
+      </g>
+      <g class="Vector 1680">
+        <path stroke="#E8B2AB" stroke-linecap="round" stroke-width="6.534" d="m5.007 3.468 4.43-.2"/>
+        <path stroke="#5A0000" stroke-linecap="round" stroke-opacity=".2" stroke-width="6.534" d="m5.007 3.468 4.43-.2" style="mix-blend-mode:multiply"/>
+      </g>
+    </g>
+    <path stroke="#1A1A1A" stroke-linecap="round" stroke-linejoin="round" stroke-width="5.445" d="M27.207 20.803a17.039 17.039 0 0 1-15.237 0" class="mouth"/>
+  </g>
+</svg>

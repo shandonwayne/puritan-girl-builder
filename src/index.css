@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-forest-dark: 41 70 10;
+    --color-forest-medium: 138 159 59;
+    --color-forest-light: 107 126 40;
+
+    --color-parchment: 246 240 229;
+    --color-parchment-dark: 229 220 200;
+
+    --color-gold: 189 167 58;
+    --color-gold-dark: 150 130 40;
+
+    --color-error: 189 59 59;
+    --color-error-light: 231 76 60;
+
+    --color-text-dark: 26 26 26;
+    --color-text-medium: 45 45 45;
+
+    --color-ui-dark-950: 6 9 3;
+    --color-ui-dark-900: 10 13 6;
+    --color-ui-dark-850: 14 18 9;
+    --color-ui-dark-800: 18 22 12;
+    --color-ui-dark-700: 26 30 21;
+    --color-ui-dark-600: 36 42 31;
+    --color-ui-dark-500: 46 52 42;
+    --color-ui-dark-400: 58 66 53;
+
+    --color-ui-border: 26 30 21;
+    --color-ui-border-light: 36 42 31;
+    --color-ui-border-lighter: 46 52 42;
+
+    --color-white: 255 255 255;
+
+    --color-worm: 235 177 171;
+    --color-olive: 185 186 103;
+    --color-lime: 197 229 82;
+    --color-poppy: 230 87 87;
+    --color-lite-black: 38 38 38;
+    --color-dark-white: 179 179 179;
+
+    --color-dice-d4: 203 162 237;
+    --color-dice-d6: 251 138 16;
+    --color-dice-d8: 189 167 58;
+    --color-dice-d10: 243 76 52;
+    --color-dice-d12: 215 133 156;
+    --color-dice-d20: 232 178 171;
+    --color-dice-result: 220 152 13;
+    --color-dice-bg: 209 206 201;
+
+    --color-tab-bg: 26 26 26;
+    --color-tab-active: 243 76 52;
+    --color-tab-text-light: 246 240 229;
+    --color-tab-text-dark: 14 15 13;
+  }
+
+  * {
+    @apply box-border;
+  }
+
+  body {
+    @apply m-0 font-sans antialiased;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type=number] {
+    -moz-appearance: textfield;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-in;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-6 py-3 bg-amber-600 hover:bg-amber-500 text-slate-900 font-semibold rounded-lg transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98];
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 bg-dark-600 hover:bg-dark-500 text-slate-200 font-semibold rounded-lg transition-all duration-200;
+  }
+
+  .card {
+    @apply bg-dark-850/50 backdrop-blur border border-dark-border/50 rounded-xl p-6;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-2 bg-dark-900/50 border border-dark-border rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all;
+  }
+}

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="41" height="26" fill="none" viewBox="0 0 41 26">
+  <defs>
+    <filter id="faceTexture" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feTurbulence type="fractalNoise" baseFrequency="0.38100969791412354 0.38100969791412354" numOctaves="3" seed="4240" />
+      <feDisplacementMap in="shape" scale="2.831524133682251" xChannelSelector="R" yChannelSelector="G" result="displacedImage" width="100%" height="100%" />
+      <feMerge>
+        <feMergeNode in="displacedImage"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <g class="face" transform="translate(0, -10)">
+    <g class="eyes">
+      <ellipse cx="3.972" cy="12.816" fill="#1A1A1A" class="Ellipse 4042" rx="3.809" ry="3.812"/>
+      <ellipse cx="35.537" cy="12.816" fill="#1A1A1A" class="Ellipse 4043" rx="3.809" ry="3.812"/>
+    </g>
+    <g class="eyebrows" filter="url(#faceTexture)">
+      <g class="Vector 1679">
+        <path stroke="#E8B2AB" stroke-linecap="round" stroke-width="6.534" d="m36.823 3.267-6.347.108"/>
+        <path stroke="#5A0000" stroke-linecap="round" stroke-opacity=".2" stroke-width="6.534" d="m36.823 3.267-6.347.108" style="mix-blend-mode:multiply"/>
+      </g>
+      <g class="eye">
+        <path stroke="#E8B2AB" stroke-linecap="round" stroke-width="6.534" d="m3.266 3.268 6.347.108"/>
+        <path stroke="#5A0000" stroke-linecap="round" stroke-opacity=".2" stroke-width="6.534" d="m3.266 3.268 6.347.108" style="mix-blend-mode:multiply"/>
+      </g>
+    </g>
+    <path stroke="#1A1A1A" stroke-linecap="round" stroke-linejoin="round" stroke-width="5.445" d="m27.163 20.134-4.71.312c-1.75.116-3.48.432-5.158.944l-4.132 1.26" class="mouth"/>
+  </g>
+</svg>
