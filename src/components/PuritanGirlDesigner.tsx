@@ -93,7 +93,7 @@ export default function PuritanGirlDesigner() {
   const [showCustomHairColor, setShowCustomHairColor] = useState(false);
 
   return (
-    <div className="flex gap-0 h-[calc(100vh-8rem-100px)]">
+    <div className="flex gap-0 h-[650px] max-h-[650px]">
       <div className="flex-1 rounded-l-2xl flex items-center justify-center px-32 py-12" style={{ backgroundColor: '#B2B33A' }}>
         <div className="relative w-full max-w-md aspect-[259/455]">
           <LayeredCharacter
