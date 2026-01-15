@@ -18,12 +18,12 @@ import face2SVG from '../assets/faces/face_2.svg';
 import face3SVG from '../assets/faces/face_3.svg';
 import face4SVG from '../assets/faces/face_4.svg';
 import face5SVG from '../assets/faces/face_5.svg';
-import boots1SVG from '../assets/boots_1.svg';
-import boots2SVG from '../assets/boots_2.svg';
-import boots3SVG from '../assets/boots_3.svg';
-import boots4SVG from '../assets/boots_4.svg';
-import boots5SVG from '../assets/boots_5.svg';
-import boots6SVG from '../assets/boots_6.svg';
+import boots1SVG from '../assets/boots_1 copy.svg';
+import boots2SVG from '../assets/boots_2 copy.svg';
+import boots3SVG from '../assets/boots_3 copy.svg';
+import boots4SVG from '../assets/boots_4 copy.svg';
+import boots5SVG from '../assets/boots_5 copy.svg';
+import boots6SVG from '../assets/boots_6 copy.svg';
 
 interface LayeredCharacterProps {
   skinTone: string;
