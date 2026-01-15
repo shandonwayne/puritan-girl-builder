@@ -402,6 +402,37 @@ export default function LayeredCharacter({
       }
     }
 
+    let bootsSVG = null;
+    let bootsGradientElement: SVGLinearGradientElement | null = null;
+    let bootsGradientId = '';
+
+    if (bootsSVGRef.current) {
+      const bootsDoc = parser.parseFromString(bootsSVGRef.current, 'image/svg+xml');
+      bootsSVG = bootsDoc.querySelector('svg');
+      if (bootsSVG && bootsStyle) {
+        const bootsPaths = bootsSVG.querySelectorAll('.boots path[fill="#1A1A1A"], .boots ellipse[fill="#1A1A1A"]');
+        const bootsStrokes = bootsSVG.querySelectorAll('.boots path[stroke="#1A1A1A"]');
+
+        if (isGradient(bootsColor)) {
+          const parsedGradient = parseGradient(bootsColor);
+          if (parsedGradient) {
+            bootsGradientId = `bootsGradient-${Date.now()}`;
+            bootsGradientElement = createSVGGradient(bootsGradientId, parsedGradient);
+
+            bootsPaths.forEach(path => path.setAttribute('fill', `url(#${bootsGradientId})`));
+            bootsStrokes.forEach(path => path.setAttribute('stroke', `url(#${bootsGradientId})`));
+          }
+        } else {
+          bootsPaths.forEach(path => path.setAttribute('fill', bootsColor));
+          bootsStrokes.forEach(path => path.setAttribute('stroke', bootsColor));
+        }
+
+        const skinToneDarker = darkenColor(darkenColor(skinTone, 0.15), 0.15);
+        const bootsBuckleStrokes = bootsSVG.querySelectorAll('path[stroke="#E09F97"]');
+        bootsBuckleStrokes.forEach(path => path.setAttribute('stroke', skinToneDarker));
+      }
+    }
+
     const wrapper = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     wrapper.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
     wrapper.setAttribute('viewBox', '0 -20 259 475');
@@ -417,6 +448,10 @@ export default function LayeredCharacter({
 
     if (dressGradientElement) {
       defsElement.appendChild(dressGradientElement);
+    }
+
+    if (bootsGradientElement) {
+      defsElement.appendChild(bootsGradientElement);
     }
 
     wrapper.appendChild(defsElement);
@@ -496,34 +531,19 @@ export default function LayeredCharacter({
       }
     }
 
-    let bootsSVG = null;
-    if (bootsSVGRef.current) {
-      const bootsDoc = parser.parseFromString(bootsSVGRef.current, 'image/svg+xml');
-      bootsSVG = bootsDoc.querySelector('svg');
-      if (bootsSVG && bootsStyle) {
-        const bootsPaths = bootsSVG.querySelectorAll('.boots path[fill="#1A1A1A"], .boots ellipse[fill="#1A1A1A"]');
-        bootsPaths.forEach(path => path.setAttribute('fill', bootsColor));
-
-        const bootsStrokes = bootsSVG.querySelectorAll('.boots path[stroke="#1A1A1A"]');
-        bootsStrokes.forEach(path => path.setAttribute('stroke', bootsColor));
-
-        const skinToneDarker = darkenColor(darkenColor(skinTone, 0.15), 0.15);
-        const bootsBuckleStrokes = bootsSVG.querySelectorAll('path[stroke="#E09F97"]');
-        bootsBuckleStrokes.forEach(path => path.setAttribute('stroke', skinToneDarker));
-
-        const bootsGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-        bootsGroup.setAttribute('transform', BOOTS_POSITIONS[bootsStyle] || 'translate(21, 371)');
-        const bootsContent = bootsSVG.querySelector('g');
-        if (bootsContent) {
-          bootsGroup.appendChild(bootsContent.cloneNode(true));
-        } else {
-          const children = Array.from(bootsSVG.children);
-          children.forEach(child => {
-            bootsGroup.appendChild(child.cloneNode(true));
-          });
-        }
-        wrapper.appendChild(bootsGroup);
+    if (bootsSVG && bootsStyle) {
+      const bootsGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+      bootsGroup.setAttribute('transform', BOOTS_POSITIONS[bootsStyle] || 'translate(21, 371)');
+      const bootsContent = bootsSVG.querySelector('g');
+      if (bootsContent) {
+        bootsGroup.appendChild(bootsContent.cloneNode(true));
+      } else {
+        const children = Array.from(bootsSVG.children);
+        children.forEach(child => {
+          bootsGroup.appendChild(child.cloneNode(true));
+        });
       }
+      wrapper.appendChild(bootsGroup);
     }
 
     if (dressSVG) {
