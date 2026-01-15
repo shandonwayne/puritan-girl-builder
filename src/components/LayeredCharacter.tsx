@@ -522,6 +522,10 @@ export default function LayeredCharacter({
         const bootsStrokes = bootsSVG.querySelectorAll('.boots path[stroke="#1A1A1A"]');
         bootsStrokes.forEach(path => path.setAttribute('stroke', bootsColor));
 
+        const skinToneDarker = darkenColor(darkenColor(skinTone, 0.15), 0.15);
+        const bootsBuckleStrokes = bootsSVG.querySelectorAll('path[stroke="#E09F97"]');
+        bootsBuckleStrokes.forEach(path => path.setAttribute('stroke', skinToneDarker));
+
         const bootsGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
         bootsGroup.setAttribute('transform', BOOTS_POSITIONS[bootsStyle] || 'translate(21, 371)');
         const bootsContent = bootsSVG.querySelector('g');
