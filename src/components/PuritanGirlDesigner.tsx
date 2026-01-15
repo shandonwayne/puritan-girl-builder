@@ -79,6 +79,15 @@ const PRESET_DRESS_COLORS = [
   { name: 'Coral Gradient', color: 'linear-gradient(180deg,rgba(232, 178, 171, 1) 0%, rgba(243, 76, 52, 1) 33%, rgba(251, 138, 16, 1) 100%)' },
 ];
 
+const PRESET_BOOTS_COLORS = [
+  { name: 'Black', color: '#171717' },
+  { name: 'Dark Brown', color: '#3E2D25' },
+  { name: 'Brown', color: '#A35808' },
+  { name: 'Dark Green', color: '#29460A' },
+  { name: 'Purple Gradient', color: 'linear-gradient(180deg, rgba(123, 97, 144, 1) 0%, rgba(59, 45, 69, 1) 100%)' },
+  { name: 'Earth Gradient', color: 'linear-gradient(180deg, rgba(163, 88, 8, 1) 0%, rgba(62, 45, 37, 1) 100%)' },
+];
+
 export default function PuritanGirlDesigner() {
   const [currentDesign, setCurrentDesign] = useState({
     skin_tone: '#E8B2AB',
@@ -89,6 +98,7 @@ export default function PuritanGirlDesigner() {
     dress_color: '#1A1A1A',
     bangs_style: 'bangs1',
     boots_style: 'boots1',
+    boots_color: '#3E2D25',
   });
 
   return (
@@ -104,7 +114,7 @@ export default function PuritanGirlDesigner() {
             dressColor={currentDesign.dress_color}
             bangsStyle={currentDesign.bangs_style}
             bootsStyle={currentDesign.boots_style}
-            bootsColor={currentDesign.dress_color}
+            bootsColor={currentDesign.boots_color}
           />
         </div>
       </div>
@@ -335,6 +345,48 @@ export default function PuritanGirlDesigner() {
                 {boots.name}
               </button>
             ))}
+          </div>
+        </div>
+
+        <div>
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-xs font-bold text-white uppercase tracking-widest">Boots Color</h3>
+          </div>
+          <div className="flex gap-3 mb-3 overflow-x-auto py-2">
+            {PRESET_BOOTS_COLORS.map((preset) => (
+              <button
+                key={preset.name}
+                onClick={() => setCurrentDesign({ ...currentDesign, boots_color: preset.color })}
+                className={`w-12 h-12 rounded-full border-4 transition-all flex-shrink-0 ${
+                  currentDesign.boots_color === preset.color
+                    ? 'border-white scale-110'
+                    : 'border-dark-white/30 hover:border-dark-white/50'
+                }`}
+                style={preset.color.startsWith('linear-gradient')
+                  ? { backgroundImage: preset.color }
+                  : { backgroundColor: preset.color }
+                }
+                title={preset.name}
+              />
+            ))}
+          </div>
+          <div className="flex items-center gap-2">
+            {!currentDesign.boots_color.startsWith('linear-gradient') && (
+              <input
+                type="color"
+                value={currentDesign.boots_color}
+                onChange={(e) => setCurrentDesign({ ...currentDesign, boots_color: e.target.value })}
+                className="w-12 h-10 rounded-lg cursor-pointer bg-lite-black border-2 border-dark-white/30"
+              />
+            )}
+            <input
+              type="text"
+              value={currentDesign.boots_color}
+              onChange={(e) => setCurrentDesign({ ...currentDesign, boots_color: e.target.value })}
+              disabled={currentDesign.boots_color.startsWith('linear-gradient')}
+              className="flex-1 px-3 py-2 bg-lite-black border-2 border-dark-white/30 rounded-lg text-white text-sm focus:outline-none focus:border-white disabled:opacity-50 disabled:cursor-not-allowed"
+              placeholder="#3E2D25"
+            />
           </div>
         </div>
 
