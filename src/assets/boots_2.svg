@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 216 104" fill="none">
+  <g class="boots">
+    <!-- Left boot with buckle -->
+    <path d="M45 20 L45 75 L45 80 Q45 90 55 90 L75 90 Q80 90 80 85 L80 80 L80 20 Q80 15 75 15 L50 15 Q45 15 45 20 Z" fill="#1A1A1A" stroke="#1A1A1A" stroke-width="1.5"/>
+    <ellipse cx="62.5" cy="15" rx="17.5" ry="5" fill="#1A1A1A"/>
+    <rect x="50" y="50" width="25" height="8" fill="none" stroke="#8B7355" stroke-width="2"/>
+    <rect x="58" y="52" width="9" height="4" fill="#8B7355"/>
+
+    <!-- Right boot with buckle -->
+    <path d="M136 20 L136 75 L136 80 Q136 90 146 90 L166 90 Q171 90 171 85 L171 80 L171 20 Q171 15 166 15 L141 15 Q136 15 136 20 Z" fill="#1A1A1A" stroke="#1A1A1A" stroke-width="1.5"/>
+    <ellipse cx="153.5" cy="15" rx="17.5" ry="5" fill="#1A1A1A"/>
+    <rect x="141" y="50" width="25" height="8" fill="none" stroke="#8B7355" stroke-width="2"/>
+    <rect x="149" y="52" width="9" height="4" fill="#8B7355"/>
+  </g>
+</svg>

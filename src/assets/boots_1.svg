@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 216 104" fill="none">
+  <g class="boots">
+    <!-- Left boot -->
+    <path d="M45 20 L45 80 L45 85 Q45 95 55 95 L75 95 Q80 95 80 90 L80 85 L80 20 Q80 15 75 15 L50 15 Q45 15 45 20 Z" fill="#1A1A1A" stroke="#1A1A1A" stroke-width="1.5"/>
+    <ellipse cx="62.5" cy="15" rx="17.5" ry="5" fill="#1A1A1A"/>
+
+    <!-- Right boot -->
+    <path d="M136 20 L136 80 L136 85 Q136 95 146 95 L166 95 Q171 95 171 90 L171 85 L171 20 Q171 15 166 15 L141 15 Q136 15 136 20 Z" fill="#1A1A1A" stroke="#1A1A1A" stroke-width="1.5"/>
+    <ellipse cx="153.5" cy="15" rx="17.5" ry="5" fill="#1A1A1A"/>
+  </g>
+</svg>

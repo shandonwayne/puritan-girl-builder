@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 216 104" fill="none">
+  <g class="boots">
+    <!-- Left ankle boot -->
+    <path d="M45 30 L45 70 L45 75 Q45 85 55 85 L75 85 Q80 85 80 80 L80 75 L80 30 Q80 25 75 25 L50 25 Q45 25 45 30 Z" fill="#1A1A1A" stroke="#1A1A1A" stroke-width="1.5"/>
+    <ellipse cx="62.5" cy="25" rx="17.5" ry="5" fill="#1A1A1A"/>
+    <line x1="50" y1="40" x2="75" y2="40" stroke="#666" stroke-width="1.5"/>
+    <line x1="50" y1="50" x2="75" y2="50" stroke="#666" stroke-width="1.5"/>
+
+    <!-- Right ankle boot -->
+    <path d="M136 30 L136 70 L136 75 Q136 85 146 85 L166 85 Q171 85 171 80 L171 75 L171 30 Q171 25 166 25 L141 25 Q136 25 136 30 Z" fill="#1A1A1A" stroke="#1A1A1A" stroke-width="1.5"/>
+    <ellipse cx="153.5" cy="25" rx="17.5" ry="5" fill="#1A1A1A"/>
+    <line x1="141" y1="40" x2="166" y2="40" stroke="#666" stroke-width="1.5"/>
+    <line x1="141" y1="50" x2="166" y2="50" stroke="#666" stroke-width="1.5"/>
+  </g>
+</svg>

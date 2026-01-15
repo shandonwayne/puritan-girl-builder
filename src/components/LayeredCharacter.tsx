@@ -18,6 +18,12 @@ import face2SVG from '../assets/faces/face_2.svg';
 import face3SVG from '../assets/faces/face_3.svg';
 import face4SVG from '../assets/faces/face_4.svg';
 import face5SVG from '../assets/faces/face_5.svg';
+import boots1SVG from '../assets/boots_1.svg';
+import boots2SVG from '../assets/boots_2.svg';
+import boots3SVG from '../assets/boots_3.svg';
+import boots4SVG from '../assets/boots_4.svg';
+import boots5SVG from '../assets/boots_5.svg';
+import boots6SVG from '../assets/boots_6.svg';
 
 interface LayeredCharacterProps {
   skinTone: string;
@@ -27,6 +33,8 @@ interface LayeredCharacterProps {
   dressStyle: string;
   dressColor: string;
   bangsStyle?: string;
+  bootsStyle?: string;
+  bootsColor?: string;
 }
 
 const HAIRSTYLE_MAP: Record<string, string> = {
@@ -57,6 +65,24 @@ const FACE_MAP: Record<string, string> = {
   face3: face3SVG,
   face4: face4SVG,
   face5: face5SVG,
+};
+
+const BOOTS_MAP: Record<string, string> = {
+  boots1: boots1SVG,
+  boots2: boots2SVG,
+  boots3: boots3SVG,
+  boots4: boots4SVG,
+  boots5: boots5SVG,
+  boots6: boots6SVG,
+};
+
+const BOOTS_POSITIONS: Record<string, string> = {
+  boots1: 'translate(21, 371)',
+  boots2: 'translate(21, 371)',
+  boots3: 'translate(21, 371)',
+  boots4: 'translate(21, 319)',
+  boots5: 'translate(21, 371)',
+  boots6: 'translate(21, 371)',
 };
 
 const lightenColor = (color: string, amount: number = 0.15): string => {
@@ -238,6 +264,8 @@ export default function LayeredCharacter({
   dressStyle,
   dressColor,
   bangsStyle = '',
+  bootsStyle = '',
+  bootsColor = '#1A1A1A',
 }: LayeredCharacterProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const baseSVGRef = useRef<string>('');
@@ -245,6 +273,7 @@ export default function LayeredCharacter({
   const hairstyleSVGRef = useRef<string>('');
   const dressSVGRef = useRef<string>('');
   const bangsSVGRef = useRef<string>('');
+  const bootsSVGRef = useRef<string>('');
 
   useEffect(() => {
     const loadSVGs = async () => {
@@ -263,6 +292,10 @@ export default function LayeredCharacter({
 
       if (bangsStyle && BANGS_MAP[bangsStyle]) {
         promises.push(fetch(BANGS_MAP[bangsStyle]));
+      }
+
+      if (bootsStyle && BOOTS_MAP[bootsStyle]) {
+        promises.push(fetch(BOOTS_MAP[bootsStyle]));
       }
 
       const results = await Promise.all(promises);
@@ -287,21 +320,28 @@ export default function LayeredCharacter({
 
       if (bangsStyle && BANGS_MAP[bangsStyle]) {
         bangsSVGRef.current = await results[resultIndex].text();
+        resultIndex++;
       } else {
         bangsSVGRef.current = '';
+      }
+
+      if (bootsStyle && BOOTS_MAP[bootsStyle]) {
+        bootsSVGRef.current = await results[resultIndex].text();
+      } else {
+        bootsSVGRef.current = '';
       }
 
       renderComposite();
     };
 
     loadSVGs();
-  }, [hairstyle, faceType, dressStyle, bangsStyle]);
+  }, [hairstyle, faceType, dressStyle, bangsStyle, bootsStyle]);
 
   useEffect(() => {
     if (baseSVGRef.current && hairstyleSVGRef.current) {
       renderComposite();
     }
-  }, [skinTone, hairColor, dressColor]);
+  }, [skinTone, hairColor, dressColor, bootsColor]);
 
   const renderComposite = () => {
     if (!containerRef.current || !baseSVGRef.current) return;
@@ -468,6 +508,32 @@ export default function LayeredCharacter({
       const dressDefs = dressSVG.querySelector('defs');
       if (dressDefs) {
         wrapper.appendChild(dressDefs.cloneNode(true));
+      }
+    }
+
+    let bootsSVG = null;
+    if (bootsSVGRef.current) {
+      const bootsDoc = parser.parseFromString(bootsSVGRef.current, 'image/svg+xml');
+      bootsSVG = bootsDoc.querySelector('svg');
+      if (bootsSVG && bootsStyle) {
+        const bootsPaths = bootsSVG.querySelectorAll('.boots path[fill="#1A1A1A"], .boots ellipse[fill="#1A1A1A"]');
+        bootsPaths.forEach(path => path.setAttribute('fill', bootsColor));
+
+        const bootsStrokes = bootsSVG.querySelectorAll('.boots path[stroke="#1A1A1A"]');
+        bootsStrokes.forEach(path => path.setAttribute('stroke', bootsColor));
+
+        const bootsGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+        bootsGroup.setAttribute('transform', BOOTS_POSITIONS[bootsStyle] || 'translate(21, 371)');
+        const bootsContent = bootsSVG.querySelector('g');
+        if (bootsContent) {
+          bootsGroup.appendChild(bootsContent.cloneNode(true));
+        } else {
+          const children = Array.from(bootsSVG.children);
+          children.forEach(child => {
+            bootsGroup.appendChild(child.cloneNode(true));
+          });
+        }
+        wrapper.appendChild(bootsGroup);
       }
     }
 

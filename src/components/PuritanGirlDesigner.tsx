@@ -52,6 +52,15 @@ const BANGS_STYLES = [
   { id: 'bangs4', name: 'Wispy' },
 ];
 
+const BOOTS_STYLES = [
+  { id: 'boots1', name: 'Classic' },
+  { id: 'boots2', name: 'Buckled' },
+  { id: 'boots3', name: 'Ankle' },
+  { id: 'boots4', name: 'Tall' },
+  { id: 'boots5', name: 'Simple' },
+  { id: 'boots6', name: 'Laced' },
+];
+
 const PRESET_HAIR_COLORS = [
   { name: 'Black', color: '#171717' },
   { name: 'Coral', color: '#F34C34' },
@@ -79,6 +88,8 @@ export default function PuritanGirlDesigner() {
     dress_style: 'dress1',
     dress_color: '#1A1A1A',
     bangs_style: 'bangs1',
+    boots_style: 'boots1',
+    boots_color: '#1A1A1A',
   });
 
   return (
@@ -93,6 +104,8 @@ export default function PuritanGirlDesigner() {
             dressStyle={currentDesign.dress_style}
             dressColor={currentDesign.dress_color}
             bangsStyle={currentDesign.bangs_style}
+            bootsStyle={currentDesign.boots_style}
+            bootsColor={currentDesign.boots_color}
           />
         </div>
       </div>
@@ -301,6 +314,48 @@ export default function PuritanGirlDesigner() {
               disabled={currentDesign.dress_color.startsWith('linear-gradient')}
               className="flex-1 px-3 py-2 bg-lite-black border-2 border-dark-white/30 rounded-lg text-white text-sm focus:outline-none focus:border-white disabled:opacity-50 disabled:cursor-not-allowed"
               placeholder="#4A5568"
+            />
+          </div>
+        </div>
+
+        <div>
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-xs font-bold text-white uppercase tracking-widest">Boots</h3>
+          </div>
+          <div className="grid grid-cols-3 gap-3">
+            {BOOTS_STYLES.map((boots) => (
+              <button
+                key={boots.id}
+                onClick={() => setCurrentDesign({ ...currentDesign, boots_style: boots.id })}
+                className={`h-20 rounded-2xl flex items-center justify-center text-xs font-medium transition-all ${
+                  currentDesign.boots_style === boots.id
+                    ? 'bg-lime text-black scale-105'
+                    : 'bg-lite-black text-dark-white hover:bg-lite-black/80'
+                }`}
+              >
+                {boots.name}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-xs font-bold text-white uppercase tracking-widest">Boots Color</h3>
+          </div>
+          <div className="flex items-center gap-2">
+            <input
+              type="color"
+              value={currentDesign.boots_color}
+              onChange={(e) => setCurrentDesign({ ...currentDesign, boots_color: e.target.value })}
+              className="w-12 h-10 rounded-lg cursor-pointer bg-lite-black border-2 border-dark-white/30"
+            />
+            <input
+              type="text"
+              value={currentDesign.boots_color}
+              onChange={(e) => setCurrentDesign({ ...currentDesign, boots_color: e.target.value })}
+              className="flex-1 px-3 py-2 bg-lite-black border-2 border-dark-white/30 rounded-lg text-white text-sm focus:outline-none focus:border-white"
+              placeholder="#1A1A1A"
             />
           </div>
         </div>
