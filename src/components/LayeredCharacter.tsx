@@ -52,13 +52,13 @@ const HAIRSTYLE_MAP: Record<string, string> = {
 };
 
 const HAIRSTYLE_POSITIONS: Record<string, string> = {
-  style1: 'translate(31.5, -20)',
-  style2: 'translate(31.5, -20)',
-  style3: 'translate(31.5, -20)',
+  style1: 'translate(31.5, -18)',
+  style2: 'translate(31.5, -18)',
+  style3: 'translate(31.5, -18)',
   style4: 'translate(-3, -18)',
   style5: 'translate(-4, -18)',
-  style6: 'translate(26.5, -20)',
-  style7: 'translate(57, 5)',
+  style6: 'translate(-3, -18)',
+  style7: 'translate(30, -18)',
 };
 
 const DRESS_MAP: Record<string, string> = {
