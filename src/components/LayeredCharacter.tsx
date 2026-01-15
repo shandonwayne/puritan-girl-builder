@@ -410,8 +410,8 @@ export default function LayeredCharacter({
       const bootsDoc = parser.parseFromString(bootsSVGRef.current, 'image/svg+xml');
       bootsSVG = bootsDoc.querySelector('svg');
       if (bootsSVG && bootsStyle) {
-        const bootsPaths = bootsSVG.querySelectorAll('.boots path[fill="#1A1A1A"], .boots ellipse[fill="#1A1A1A"]');
-        const bootsStrokes = bootsSVG.querySelectorAll('.boots path[stroke="#1A1A1A"]');
+        const bootsPaths = bootsSVG.querySelectorAll('path[fill="#1A1A1A"], ellipse[fill="#1A1A1A"]');
+        const bootsStrokes = bootsSVG.querySelectorAll('path[stroke="#1A1A1A"]');
 
         if (isGradient(bootsColor)) {
           const parsedGradient = parseGradient(bootsColor);
