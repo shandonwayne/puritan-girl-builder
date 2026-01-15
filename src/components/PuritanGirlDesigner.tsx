@@ -204,20 +204,55 @@ export default function PuritanGirlDesigner() {
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-xs font-bold text-white uppercase tracking-widest">Hair Style</h3>
           </div>
-          <div className="grid grid-cols-3 gap-3">
-            {HAIRSTYLES.map((style) => (
+          <div className="relative bg-worm rounded-2xl p-6">
+            <div className="flex items-center justify-center gap-4">
               <button
-                key={style.id}
-                onClick={() => setCurrentDesign({ ...currentDesign, hairstyle: style.id })}
-                className={`h-32 rounded-2xl overflow-hidden transition-all ${
-                  currentDesign.hairstyle === style.id
-                    ? 'scale-105 ring-4 ring-white/20'
-                    : 'hover:scale-105'
-                }`}
+                onClick={() => {
+                  const currentIndex = HAIRSTYLES.findIndex(s => s.id === currentDesign.hairstyle);
+                  const prevIndex = currentIndex === 0 ? HAIRSTYLES.length - 1 : currentIndex - 1;
+                  setCurrentDesign({ ...currentDesign, hairstyle: HAIRSTYLES[prevIndex].id });
+                }}
+                className="bg-black/50 hover:bg-black/70 text-white rounded-full p-2 transition-colors"
+                aria-label="Previous hairstyle"
               >
-                <img src={style.image} alt={style.name} className="w-full h-full object-cover" />
+                <ChevronLeft className="w-6 h-6" />
               </button>
-            ))}
+
+              <div className="w-40 h-40 rounded-2xl overflow-hidden bg-worm/50 flex items-center justify-center">
+                <img
+                  src={HAIRSTYLES.find(s => s.id === currentDesign.hairstyle)?.image}
+                  alt="Current hairstyle"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
+              <button
+                onClick={() => {
+                  const currentIndex = HAIRSTYLES.findIndex(s => s.id === currentDesign.hairstyle);
+                  const nextIndex = currentIndex === HAIRSTYLES.length - 1 ? 0 : currentIndex + 1;
+                  setCurrentDesign({ ...currentDesign, hairstyle: HAIRSTYLES[nextIndex].id });
+                }}
+                className="bg-black/50 hover:bg-black/70 text-white rounded-full p-2 transition-colors"
+                aria-label="Next hairstyle"
+              >
+                <ChevronRight className="w-6 h-6" />
+              </button>
+            </div>
+
+            <div className="flex items-center justify-center gap-2 mt-4">
+              {HAIRSTYLES.map((style, index) => (
+                <button
+                  key={style.id}
+                  onClick={() => setCurrentDesign({ ...currentDesign, hairstyle: style.id })}
+                  className={`h-2 rounded-full transition-all ${
+                    currentDesign.hairstyle === style.id
+                      ? 'w-8 bg-white'
+                      : 'w-2 bg-white/30 hover:bg-white/50'
+                  }`}
+                  aria-label={`Select hairstyle ${index + 1}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
 
