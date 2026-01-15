@@ -8,6 +8,12 @@ import face5SVG from '../assets/faces/face_5.svg';
 import hairstyle1Btn from '../assets/hairstyle_1_btn.png';
 import hairstyle2Btn from '../assets/hairstyle_2_btn.png';
 import hairstyle3Btn from '../assets/hairstyle_3_btn.png';
+import dress1SVG from '../assets/dress_1.svg';
+import dressCollaredSVG from '../assets/collared.svg';
+import dressApronSVG from '../assets/apron_style.svg';
+import dressLacedSVG from '../assets/laced_bodice.svg';
+import dressClassicSVG from '../assets/classic.svg';
+import dressRuffledSVG from '../assets/ruffled.svg';
 
 const SKIN_TONES = [
   { id: 'fair', name: 'Fair', color: '#FADADD' },
@@ -37,12 +43,12 @@ const HAIRSTYLES = [
 ];
 
 const DRESS_STYLES = [
-  { id: 'dress1', name: 'Simple Bodice' },
-  { id: 'dress2', name: 'Collared' },
-  { id: 'dress3', name: 'Apron Style' },
-  { id: 'dress4', name: 'Laced Bodice' },
-  { id: 'dress5', name: 'Classic' },
-  { id: 'dress6', name: 'Ruffled' },
+  { id: 'dress1', name: 'Simple Bodice', image: dress1SVG },
+  { id: 'dress2', name: 'Collared', image: dressCollaredSVG },
+  { id: 'dress3', name: 'Apron Style', image: dressApronSVG },
+  { id: 'dress4', name: 'Laced Bodice', image: dressLacedSVG },
+  { id: 'dress5', name: 'Classic', image: dressClassicSVG },
+  { id: 'dress6', name: 'Ruffled', image: dressRuffledSVG },
 ];
 
 const BANGS_STYLES = [
@@ -268,19 +274,36 @@ export default function PuritanGirlDesigner() {
         <div>
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-xs font-bold text-white uppercase tracking-widest">Dress</h3>
+            <div className="flex gap-1">
+              {DRESS_STYLES.map((_, index) => (
+                <div
+                  key={index}
+                  className={`w-2 h-2 rounded-full ${
+                    index === DRESS_STYLES.findIndex(d => d.id === currentDesign.dress_style)
+                      ? 'bg-poppy'
+                      : 'bg-dark-white/30'
+                  }`}
+                />
+              ))}
+            </div>
           </div>
-          <div className="grid grid-cols-3 gap-3">
+          <div className="flex gap-3 overflow-x-auto pb-2">
             {DRESS_STYLES.map((dress) => (
               <button
                 key={dress.id}
                 onClick={() => setCurrentDesign({ ...currentDesign, dress_style: dress.id })}
-                className={`h-20 rounded-2xl flex items-center justify-center text-xs font-medium transition-all ${
+                className={`flex-shrink-0 w-32 rounded-2xl overflow-hidden transition-all flex flex-col ${
                   currentDesign.dress_style === dress.id
-                    ? 'bg-lime text-black scale-105'
-                    : 'bg-lite-black text-dark-white hover:bg-lite-black/80'
+                    ? 'bg-worm scale-105 ring-4 ring-white/20'
+                    : 'bg-worm/90 hover:bg-worm'
                 }`}
               >
-                {dress.name}
+                <div className="h-36 flex items-start justify-center pt-2 px-2">
+                  <img src={dress.image} alt={dress.name} className="h-full w-auto object-contain object-top" />
+                </div>
+                <div className="px-2 pb-2 text-center">
+                  <span className="text-xs font-medium text-black">{dress.name}</span>
+                </div>
               </button>
             ))}
           </div>
