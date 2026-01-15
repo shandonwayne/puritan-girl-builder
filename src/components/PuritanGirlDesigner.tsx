@@ -154,13 +154,13 @@ export default function PuritanGirlDesigner() {
               <button
                 key={face.id}
                 onClick={() => setCurrentDesign({ ...currentDesign, face_type: face.id })}
-                className={`flex-1 h-[65px] rounded-2xl flex items-center justify-center transition-all overflow-hidden ${
+                className={`flex-1 h-[50px] rounded-2xl flex items-center justify-center transition-all overflow-hidden ${
                   currentDesign.face_type === face.id
                     ? 'bg-worm scale-105 ring-4 ring-white/20'
                     : 'bg-worm/90 hover:bg-worm'
                 }`}
               >
-                <img src={face.image} alt={face.id} className="w-[45%] h-[85%] object-contain" />
+                <img src={face.image} alt={face.id} className="w-[40%] h-[80%] object-contain" />
               </button>
             ))}
           </div>
