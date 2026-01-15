@@ -77,7 +77,7 @@ const BOOTS_MAP: Record<string, string> = {
 };
 
 const BOOTS_POSITIONS: Record<string, string> = {
-  boots1: 'translate(21, 371)',
+  boots1: 'translate(21, 339)',
   boots2: 'translate(21, 371)',
   boots3: 'translate(21, 371)',
   boots4: 'translate(21, 319)',
