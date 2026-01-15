@@ -146,18 +146,6 @@ export default function PuritanGirlDesigner() {
         <div>
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-xs font-bold text-white uppercase tracking-widest">Face Type</h3>
-            <div className="flex gap-1">
-              {FACE_TYPES.map((_, index) => (
-                <div
-                  key={index}
-                  className={`w-2 h-2 rounded-full ${
-                    index === FACE_TYPES.findIndex(f => f.id === currentDesign.face_type)
-                      ? 'bg-poppy'
-                      : 'bg-dark-white/30'
-                  }`}
-                />
-              ))}
-            </div>
           </div>
           <div className="flex gap-3">
             {FACE_TYPES.map((face) => (
@@ -179,18 +167,6 @@ export default function PuritanGirlDesigner() {
         <div>
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-xs font-bold text-white uppercase tracking-widest">Hair Style</h3>
-            <div className="flex gap-1">
-              {HAIRSTYLES.map((_, index) => (
-                <div
-                  key={index}
-                  className={`w-2 h-2 rounded-full ${
-                    index === HAIRSTYLES.findIndex(h => h.id === currentDesign.hairstyle)
-                      ? 'bg-poppy'
-                      : 'bg-dark-white/30'
-                  }`}
-                />
-              ))}
-            </div>
           </div>
           <div className="flex gap-3">
             {HAIRSTYLES.map((style) => (
@@ -278,18 +254,6 @@ export default function PuritanGirlDesigner() {
         <div>
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-xs font-bold text-white uppercase tracking-widest">Dress</h3>
-            <div className="flex gap-1">
-              {DRESS_STYLES.map((_, index) => (
-                <div
-                  key={index}
-                  className={`w-2 h-2 rounded-full ${
-                    index === DRESS_STYLES.findIndex(d => d.id === currentDesign.dress_style)
-                      ? 'bg-poppy'
-                      : 'bg-dark-white/30'
-                  }`}
-                />
-              ))}
-            </div>
           </div>
           <div className="flex gap-3 overflow-x-auto pb-2">
             {DRESS_STYLES.map((dress) => (
