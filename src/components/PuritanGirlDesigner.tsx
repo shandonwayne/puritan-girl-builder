@@ -9,6 +9,10 @@ import face5SVG from '../assets/faces/face_5.svg';
 import hairstyle1Btn from '../assets/hairstyle_1_btn.png';
 import hairstyle2Btn from '../assets/hairstyle_2_btn.png';
 import hairstyle3Btn from '../assets/hairstyle_3_btn.png';
+import hairstyle4SVG from '../assets/hairstyle_4.svg';
+import hairstyle5SVG from '../assets/hairstyle_5.svg';
+import hairstyle6SVG from '../assets/hairstyle_6.svg';
+import hairstyle7SVG from '../assets/hairstyle_7.svg';
 import dressSimpleBodiceSVG from '../assets/simple_bodice.svg';
 import dressCollaredSVG from '../assets/collared.svg';
 import dressApronSVG from '../assets/apron_style.svg';
@@ -41,6 +45,10 @@ const HAIRSTYLES = [
   { id: 'style1', name: 'Braided Bun', image: hairstyle1Btn },
   { id: 'style2', name: 'Center Part', image: hairstyle2Btn },
   { id: 'style3', name: 'Side Swept', image: hairstyle3Btn },
+  { id: 'style4', name: 'Style 4', image: hairstyle4SVG },
+  { id: 'style5', name: 'Style 5', image: hairstyle5SVG },
+  { id: 'style6', name: 'Style 6', image: hairstyle6SVG },
+  { id: 'style7', name: 'Style 7', image: hairstyle7SVG },
 ];
 
 const DRESS_STYLES = [
@@ -196,12 +204,12 @@ export default function PuritanGirlDesigner() {
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-xs font-bold text-white uppercase tracking-widest">Hair Style</h3>
           </div>
-          <div className="flex gap-3">
+          <div className="grid grid-cols-3 gap-3">
             {HAIRSTYLES.map((style) => (
               <button
                 key={style.id}
                 onClick={() => setCurrentDesign({ ...currentDesign, hairstyle: style.id })}
-                className={`flex-1 h-32 rounded-2xl overflow-hidden transition-all ${
+                className={`h-32 rounded-2xl overflow-hidden transition-all ${
                   currentDesign.hairstyle === style.id
                     ? 'scale-105 ring-4 ring-white/20'
                     : 'hover:scale-105'
