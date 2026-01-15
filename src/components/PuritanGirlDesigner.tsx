@@ -8,14 +8,12 @@ import face5SVG from '../assets/faces/face_5.svg';
 import hairstyle1Btn from '../assets/hairstyle_1_btn.png';
 import hairstyle2Btn from '../assets/hairstyle_2_btn.png';
 import hairstyle3Btn from '../assets/hairstyle_3_btn.png';
-import dress1SVG from '../assets/dress_1.svg';
-import dressCollaredSVG from '../assets/collared.svg';
 import dressApronSVG from '../assets/apron_style.svg';
-import dressLacedSVG from '../assets/laced_bodice.svg';
 import dressClassicSVG from '../assets/classic.svg';
+import dressCollaredSVG from '../assets/collared.svg';
+import dressLacedSVG from '../assets/laced_bodice.svg';
 import dressRuffledSVG from '../assets/ruffled.svg';
 import dressSimpleBodiceSVG from '../assets/simple_bodice.svg';
-import dressRuffledCopySVG from '../assets/ruffled copy.svg';
 
 const SKIN_TONES = [
   { id: 'fair', name: 'Fair', color: '#FADADD' },
@@ -45,14 +43,12 @@ const HAIRSTYLES = [
 ];
 
 const DRESS_STYLES = [
-  { id: 'dress1', name: 'Simple Bodice', image: dress1SVG },
-  { id: 'dress2', name: 'Collared', image: dressCollaredSVG },
-  { id: 'dress3', name: 'Apron Style', image: dressApronSVG },
+  { id: 'dress1', name: 'Apron Style', image: dressApronSVG },
+  { id: 'dress2', name: 'Classic', image: dressClassicSVG },
+  { id: 'dress3', name: 'Collared', image: dressCollaredSVG },
   { id: 'dress4', name: 'Laced Bodice', image: dressLacedSVG },
-  { id: 'dress5', name: 'Classic', image: dressClassicSVG },
-  { id: 'dress6', name: 'Ruffled', image: dressRuffledSVG },
-  { id: 'dress7', name: 'Dotted Bodice', image: dressSimpleBodiceSVG },
-  { id: 'dress8', name: 'Ruffled Dots', image: dressRuffledCopySVG },
+  { id: 'dress5', name: 'Ruffled', image: dressRuffledSVG },
+  { id: 'dress6', name: 'Simple Bodice', image: dressSimpleBodiceSVG },
 ];
 
 const BANGS_STYLES = [
