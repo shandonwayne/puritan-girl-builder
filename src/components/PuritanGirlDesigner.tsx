@@ -262,7 +262,7 @@ export default function PuritanGirlDesigner() {
                     : 'bg-worm/90 hover:bg-worm'
                 }`}
               >
-                <img src={dress.image} alt={dress.name} className="h-full w-auto object-contain object-top" />
+                <img src={dress.image} alt={dress.name} className="h-full w-auto object-contain object-top hover:animate-wobble" style={{ transformOrigin: 'top center' }} />
               </button>
             ))}
           </div>
