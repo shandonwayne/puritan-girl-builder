@@ -89,7 +89,6 @@ export default function PuritanGirlDesigner() {
     dress_color: '#1A1A1A',
     bangs_style: 'bangs1',
     boots_style: 'boots1',
-    boots_color: '#1A1A1A',
   });
 
   return (
@@ -105,7 +104,7 @@ export default function PuritanGirlDesigner() {
             dressColor={currentDesign.dress_color}
             bangsStyle={currentDesign.bangs_style}
             bootsStyle={currentDesign.boots_style}
-            bootsColor={currentDesign.boots_color}
+            bootsColor={currentDesign.dress_color}
           />
         </div>
       </div>
@@ -339,26 +338,6 @@ export default function PuritanGirlDesigner() {
           </div>
         </div>
 
-        <div>
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-xs font-bold text-white uppercase tracking-widest">Boots Color</h3>
-          </div>
-          <div className="flex items-center gap-2">
-            <input
-              type="color"
-              value={currentDesign.boots_color}
-              onChange={(e) => setCurrentDesign({ ...currentDesign, boots_color: e.target.value })}
-              className="w-12 h-10 rounded-lg cursor-pointer bg-lite-black border-2 border-dark-white/30"
-            />
-            <input
-              type="text"
-              value={currentDesign.boots_color}
-              onChange={(e) => setCurrentDesign({ ...currentDesign, boots_color: e.target.value })}
-              className="flex-1 px-3 py-2 bg-lite-black border-2 border-dark-white/30 rounded-lg text-white text-sm focus:outline-none focus:border-white"
-              placeholder="#1A1A1A"
-            />
-          </div>
-        </div>
       </div>
     </div>
   );
