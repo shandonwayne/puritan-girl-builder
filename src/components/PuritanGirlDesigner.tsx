@@ -256,18 +256,13 @@ export default function PuritanGirlDesigner() {
               <button
                 key={dress.id}
                 onClick={() => setCurrentDesign({ ...currentDesign, dress_style: dress.id })}
-                className={`flex-shrink-0 w-32 rounded-2xl overflow-hidden transition-all flex flex-col ${
+                className={`flex-shrink-0 w-32 h-36 rounded-2xl overflow-hidden transition-all flex items-start justify-center pt-2 px-2 ${
                   currentDesign.dress_style === dress.id
                     ? 'bg-worm scale-105 ring-4 ring-white/20'
                     : 'bg-worm/90 hover:bg-worm'
                 }`}
               >
-                <div className="h-36 flex items-start justify-center pt-2 px-2">
-                  <img src={dress.image} alt={dress.name} className="h-full w-auto object-contain object-top" />
-                </div>
-                <div className="px-2 pb-2 text-center">
-                  <span className="text-xs font-medium text-black">{dress.name}</span>
-                </div>
+                <img src={dress.image} alt={dress.name} className="h-full w-auto object-contain object-top" />
               </button>
             ))}
           </div>
