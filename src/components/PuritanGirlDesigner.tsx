@@ -8,7 +8,7 @@ import face5SVG from '../assets/faces/face_5.svg';
 import hairstyle1Btn from '../assets/hairstyle_1_btn.png';
 import hairstyle2Btn from '../assets/hairstyle_2_btn.png';
 import hairstyle3Btn from '../assets/hairstyle_3_btn.png';
-import dress1SVG from '../assets/dress_1.svg';
+import dressSimpleBodiceSVG from '../assets/simple_bodice.svg';
 import dressCollaredSVG from '../assets/collared.svg';
 import dressApronSVG from '../assets/apron_style.svg';
 import dressLacedSVG from '../assets/laced_bodice.svg';
@@ -43,7 +43,7 @@ const HAIRSTYLES = [
 ];
 
 const DRESS_STYLES = [
-  { id: 'dress1', name: 'Simple Bodice', image: dress1SVG },
+  { id: 'dress1', name: 'Simple Bodice', image: dressSimpleBodiceSVG },
   { id: 'dress2', name: 'Collared', image: dressCollaredSVG },
   { id: 'dress3', name: 'Apron Style', image: dressApronSVG },
   { id: 'dress4', name: 'Laced Bodice', image: dressLacedSVG },
