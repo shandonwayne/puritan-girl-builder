@@ -258,7 +258,7 @@ export default function PuritanGirlDesigner() {
                 onClick={() => setCurrentDesign({ ...currentDesign, dress_style: dress.id })}
                 className={`flex-shrink-0 w-32 h-40 rounded-2xl overflow-hidden transition-all flex items-start justify-center pt-2 px-2 ${
                   currentDesign.dress_style === dress.id
-                    ? 'bg-worm scale-105 ring-4 ring-white/20'
+                    ? 'bg-worm scale-105 border-4 border-[#F34C34]'
                     : 'bg-worm/90 hover:bg-worm'
                 }`}
               >
