@@ -91,6 +91,7 @@ export default function PuritanGirlDesigner() {
     boots_style: 'boots1',
   });
   const [showCustomHairColor, setShowCustomHairColor] = useState(false);
+  const [showCustomDressColor, setShowCustomDressColor] = useState(false);
 
   return (
     <div className="flex gap-0 h-[650px] max-h-[650px]">
@@ -306,25 +307,34 @@ export default function PuritanGirlDesigner() {
                 title={preset.name}
               />
             ))}
+            <button
+              onClick={() => setShowCustomDressColor(!showCustomDressColor)}
+              className="w-12 h-12 rounded-full border-4 border-dark-white/30 hover:border-dark-white/50 bg-lite-black flex items-center justify-center text-white text-2xl font-light transition-all flex-shrink-0"
+              title="Custom color"
+            >
+              +
+            </button>
           </div>
-          <div className="flex items-center gap-2">
-            {!currentDesign.dress_color.startsWith('linear-gradient') && (
+          {showCustomDressColor && (
+            <div className="flex items-center gap-2">
+              {!currentDesign.dress_color.startsWith('linear-gradient') && (
+                <input
+                  type="color"
+                  value={currentDesign.dress_color}
+                  onChange={(e) => setCurrentDesign({ ...currentDesign, dress_color: e.target.value })}
+                  className="w-12 h-10 rounded-lg cursor-pointer bg-lite-black border-2 border-dark-white/30"
+                />
+              )}
               <input
-                type="color"
+                type="text"
                 value={currentDesign.dress_color}
                 onChange={(e) => setCurrentDesign({ ...currentDesign, dress_color: e.target.value })}
-                className="w-12 h-10 rounded-lg cursor-pointer bg-lite-black border-2 border-dark-white/30"
+                disabled={currentDesign.dress_color.startsWith('linear-gradient')}
+                className="flex-1 px-3 py-2 bg-lite-black border-2 border-dark-white/30 rounded-lg text-white text-sm focus:outline-none focus:border-white disabled:opacity-50 disabled:cursor-not-allowed"
+                placeholder="#4A5568"
               />
-            )}
-            <input
-              type="text"
-              value={currentDesign.dress_color}
-              onChange={(e) => setCurrentDesign({ ...currentDesign, dress_color: e.target.value })}
-              disabled={currentDesign.dress_color.startsWith('linear-gradient')}
-              className="flex-1 px-3 py-2 bg-lite-black border-2 border-dark-white/30 rounded-lg text-white text-sm focus:outline-none focus:border-white disabled:opacity-50 disabled:cursor-not-allowed"
-              placeholder="#4A5568"
-            />
-          </div>
+            </div>
+          )}
         </div>
 
         <div>
