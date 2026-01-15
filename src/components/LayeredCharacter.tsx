@@ -458,7 +458,7 @@ export default function LayeredCharacter({
 
     if (hairSVG) {
       const hairGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-      hairGroup.setAttribute('transform', 'translate(27.5, -20)');
+      hairGroup.setAttribute('transform', 'translate(31.5, -20)');
       const hairContent = hairSVG.querySelector('g');
       if (hairContent) {
         hairGroup.appendChild(hairContent.cloneNode(true));
