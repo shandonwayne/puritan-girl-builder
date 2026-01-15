@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import LayeredCharacter from './LayeredCharacter';
 import face1SVG from '../assets/faces/face_1.svg';
 import face2SVG from '../assets/faces/face_2.svg';
@@ -99,6 +100,21 @@ export default function PuritanGirlDesigner() {
   const [showCustomHairColor, setShowCustomHairColor] = useState(false);
   const [showCustomDressColor, setShowCustomDressColor] = useState(false);
 
+  const skinToneScrollRef = useRef<HTMLDivElement>(null);
+  const hairColorScrollRef = useRef<HTMLDivElement>(null);
+  const dressStyleScrollRef = useRef<HTMLDivElement>(null);
+  const dressColorScrollRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (ref: React.RefObject<HTMLDivElement>, direction: 'left' | 'right') => {
+    if (ref.current) {
+      const scrollAmount = 200;
+      ref.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <div className="flex gap-0 h-[650px] max-h-[650px]">
       <div className="flex-1 rounded-l-2xl flex items-center justify-center px-32 py-12" style={{ backgroundColor: '#B2B33A' }}>
@@ -122,20 +138,36 @@ export default function PuritanGirlDesigner() {
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-xs font-bold text-white uppercase tracking-widest">Skin Tone</h3>
           </div>
-          <div className="flex gap-3 overflow-x-auto py-4">
-            {SKIN_TONES.map((tone) => (
-              <button
-                key={tone.id}
-                onClick={() => setCurrentDesign({ ...currentDesign, skin_tone: tone.color })}
-                className={`w-[55px] h-[55px] rounded-full border-4 transition-all flex-shrink-0 ${
-                  currentDesign.skin_tone === tone.color
-                    ? 'border-white scale-110'
-                    : 'border-dark-white/30 hover:border-dark-white/50'
-                }`}
-                style={{ backgroundColor: tone.color }}
-                title={tone.name}
-              />
-            ))}
+          <div className="relative group">
+            <button
+              onClick={() => scroll(skinToneScrollRef, 'left')}
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
+              aria-label="Scroll left"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <div ref={skinToneScrollRef} className="flex gap-3 overflow-x-auto py-4 scrollbar-hide">
+              {SKIN_TONES.map((tone) => (
+                <button
+                  key={tone.id}
+                  onClick={() => setCurrentDesign({ ...currentDesign, skin_tone: tone.color })}
+                  className={`w-[55px] h-[55px] rounded-full border-4 transition-all flex-shrink-0 ${
+                    currentDesign.skin_tone === tone.color
+                      ? 'border-white scale-110'
+                      : 'border-dark-white/30 hover:border-dark-white/50'
+                  }`}
+                  style={{ backgroundColor: tone.color }}
+                  title={tone.name}
+                />
+              ))}
+            </div>
+            <button
+              onClick={() => scroll(skinToneScrollRef, 'right')}
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
+              aria-label="Scroll right"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
           </div>
         </div>
 
@@ -185,26 +217,42 @@ export default function PuritanGirlDesigner() {
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-xs font-bold text-white uppercase tracking-widest">Hair Color</h3>
           </div>
-          <div className="flex gap-3 mb-3 overflow-x-auto py-2">
-            {PRESET_HAIR_COLORS.map((preset) => (
-              <button
-                key={preset.name}
-                onClick={() => setCurrentDesign({ ...currentDesign, hair_color: preset.color })}
-                className={`w-12 h-12 rounded-full border-4 transition-all flex-shrink-0 ${
-                  currentDesign.hair_color === preset.color
-                    ? 'border-white scale-110'
-                    : 'border-dark-white/30 hover:border-dark-white/50'
-                }`}
-                style={{ backgroundColor: preset.color }}
-                title={preset.name}
-              />
-            ))}
+          <div className="relative group">
             <button
-              onClick={() => setShowCustomHairColor(!showCustomHairColor)}
-              className="w-12 h-12 rounded-full border-4 border-dark-white/30 hover:border-dark-white/50 bg-lite-black flex items-center justify-center text-white text-2xl font-light transition-all flex-shrink-0"
-              title="Custom color"
+              onClick={() => scroll(hairColorScrollRef, 'left')}
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
+              aria-label="Scroll left"
             >
-              +
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <div ref={hairColorScrollRef} className="flex gap-3 mb-3 overflow-x-auto py-2 scrollbar-hide">
+              {PRESET_HAIR_COLORS.map((preset) => (
+                <button
+                  key={preset.name}
+                  onClick={() => setCurrentDesign({ ...currentDesign, hair_color: preset.color })}
+                  className={`w-12 h-12 rounded-full border-4 transition-all flex-shrink-0 ${
+                    currentDesign.hair_color === preset.color
+                      ? 'border-white scale-110'
+                      : 'border-dark-white/30 hover:border-dark-white/50'
+                  }`}
+                  style={{ backgroundColor: preset.color }}
+                  title={preset.name}
+                />
+              ))}
+              <button
+                onClick={() => setShowCustomHairColor(!showCustomHairColor)}
+                className="w-12 h-12 rounded-full border-4 border-dark-white/30 hover:border-dark-white/50 bg-lite-black flex items-center justify-center text-white text-2xl font-light transition-all flex-shrink-0"
+                title="Custom color"
+              >
+                +
+              </button>
+            </div>
+            <button
+              onClick={() => scroll(hairColorScrollRef, 'right')}
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
+              aria-label="Scroll right"
+            >
+              <ChevronRight className="w-5 h-5" />
             </button>
           </div>
           {showCustomHairColor && (
@@ -251,34 +299,50 @@ export default function PuritanGirlDesigner() {
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-xs font-bold text-white uppercase tracking-widest">Dress</h3>
           </div>
-          <div className="flex gap-3 overflow-x-auto pb-2 bg-worm py-5 px-3 rounded-2xl">
-            {DRESS_STYLES.map((dress) => (
-              <button
-                key={dress.id}
-                onClick={() => setCurrentDesign({ ...currentDesign, dress_style: dress.id })}
-                className={`flex-shrink-0 w-32 h-40 rounded-2xl overflow-visible transition-all flex items-start justify-center pt-2 px-2 ${
-                  currentDesign.dress_style === dress.id
-                    ? 'bg-worm scale-105'
-                    : 'bg-worm/90 hover:bg-worm'
-                }`}
-              >
-                <div
-                  className="h-full w-auto relative"
-                  style={{
-                    filter: currentDesign.dress_style === dress.id
-                      ? 'drop-shadow(0 0 0 #F34C34) drop-shadow(0 0 4px #F34C34) drop-shadow(0 0 8px #F34C34)'
-                      : 'none'
-                  }}
+          <div className="relative group bg-worm py-5 px-3 rounded-2xl">
+            <button
+              onClick={() => scroll(dressStyleScrollRef, 'left')}
+              className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
+              aria-label="Scroll left"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <div ref={dressStyleScrollRef} className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
+              {DRESS_STYLES.map((dress) => (
+                <button
+                  key={dress.id}
+                  onClick={() => setCurrentDesign({ ...currentDesign, dress_style: dress.id })}
+                  className={`flex-shrink-0 w-32 h-40 rounded-2xl overflow-visible transition-all flex items-start justify-center pt-2 px-2 ${
+                    currentDesign.dress_style === dress.id
+                      ? 'bg-worm scale-105'
+                      : 'bg-worm/90 hover:bg-worm'
+                  }`}
                 >
-                  <img
-                    src={dress.image}
-                    alt={dress.name}
-                    className="h-full w-auto object-contain object-top hover:animate-wobble"
-                    style={{ transformOrigin: 'top center' }}
-                  />
-                </div>
-              </button>
-            ))}
+                  <div
+                    className="h-full w-auto relative"
+                    style={{
+                      filter: currentDesign.dress_style === dress.id
+                        ? 'drop-shadow(0 0 0 #F34C34) drop-shadow(0 0 4px #F34C34) drop-shadow(0 0 8px #F34C34)'
+                        : 'none'
+                    }}
+                  >
+                    <img
+                      src={dress.image}
+                      alt={dress.name}
+                      className="h-full w-auto object-contain object-top hover:animate-wobble"
+                      style={{ transformOrigin: 'top center' }}
+                    />
+                  </div>
+                </button>
+              ))}
+            </div>
+            <button
+              onClick={() => scroll(dressStyleScrollRef, 'right')}
+              className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
+              aria-label="Scroll right"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
           </div>
         </div>
 
@@ -286,29 +350,45 @@ export default function PuritanGirlDesigner() {
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-xs font-bold text-white uppercase tracking-widest">Dress Color</h3>
           </div>
-          <div className="flex gap-3 mb-3 overflow-x-auto py-2">
-            {PRESET_DRESS_COLORS.map((preset) => (
-              <button
-                key={preset.name}
-                onClick={() => setCurrentDesign({ ...currentDesign, dress_color: preset.color })}
-                className={`w-12 h-12 rounded-full border-4 transition-all flex-shrink-0 ${
-                  currentDesign.dress_color === preset.color
-                    ? 'border-white scale-110'
-                    : 'border-dark-white/30 hover:border-dark-white/50'
-                }`}
-                style={preset.color.startsWith('linear-gradient')
-                  ? { backgroundImage: preset.color }
-                  : { backgroundColor: preset.color }
-                }
-                title={preset.name}
-              />
-            ))}
+          <div className="relative group">
             <button
-              onClick={() => setShowCustomDressColor(!showCustomDressColor)}
-              className="w-12 h-12 rounded-full border-4 border-dark-white/30 hover:border-dark-white/50 bg-lite-black flex items-center justify-center text-white text-2xl font-light transition-all flex-shrink-0"
-              title="Custom color"
+              onClick={() => scroll(dressColorScrollRef, 'left')}
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
+              aria-label="Scroll left"
             >
-              +
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <div ref={dressColorScrollRef} className="flex gap-3 mb-3 overflow-x-auto py-2 scrollbar-hide">
+              {PRESET_DRESS_COLORS.map((preset) => (
+                <button
+                  key={preset.name}
+                  onClick={() => setCurrentDesign({ ...currentDesign, dress_color: preset.color })}
+                  className={`w-12 h-12 rounded-full border-4 transition-all flex-shrink-0 ${
+                    currentDesign.dress_color === preset.color
+                      ? 'border-white scale-110'
+                      : 'border-dark-white/30 hover:border-dark-white/50'
+                  }`}
+                  style={preset.color.startsWith('linear-gradient')
+                    ? { backgroundImage: preset.color }
+                    : { backgroundColor: preset.color }
+                  }
+                  title={preset.name}
+                />
+              ))}
+              <button
+                onClick={() => setShowCustomDressColor(!showCustomDressColor)}
+                className="w-12 h-12 rounded-full border-4 border-dark-white/30 hover:border-dark-white/50 bg-lite-black flex items-center justify-center text-white text-2xl font-light transition-all flex-shrink-0"
+                title="Custom color"
+              >
+                +
+              </button>
+            </div>
+            <button
+              onClick={() => scroll(dressColorScrollRef, 'right')}
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
+              aria-label="Scroll right"
+            >
+              <ChevronRight className="w-5 h-5" />
             </button>
           </div>
           {showCustomDressColor && (
