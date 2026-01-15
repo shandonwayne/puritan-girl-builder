@@ -496,21 +496,6 @@ export default function LayeredCharacter({
       }
     }
 
-    if (dressSVG) {
-      const dressGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-      dressGroup.setAttribute('transform', 'translate(1.5, 102)');
-      const dressContent = dressSVG.querySelector('g');
-      if (dressContent) {
-        dressGroup.appendChild(dressContent.cloneNode(true));
-      }
-      wrapper.appendChild(dressGroup);
-
-      const dressDefs = dressSVG.querySelector('defs');
-      if (dressDefs) {
-        wrapper.appendChild(dressDefs.cloneNode(true));
-      }
-    }
-
     let bootsSVG = null;
     if (bootsSVGRef.current) {
       const bootsDoc = parser.parseFromString(bootsSVGRef.current, 'image/svg+xml');
@@ -538,6 +523,21 @@ export default function LayeredCharacter({
           });
         }
         wrapper.appendChild(bootsGroup);
+      }
+    }
+
+    if (dressSVG) {
+      const dressGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+      dressGroup.setAttribute('transform', 'translate(1.5, 102)');
+      const dressContent = dressSVG.querySelector('g');
+      if (dressContent) {
+        dressGroup.appendChild(dressContent.cloneNode(true));
+      }
+      wrapper.appendChild(dressGroup);
+
+      const dressDefs = dressSVG.querySelector('defs');
+      if (dressDefs) {
+        wrapper.appendChild(dressDefs.cloneNode(true));
       }
     }
 
