@@ -81,7 +81,7 @@ const BOOTS_POSITIONS: Record<string, string> = {
   boots2: 'translate(21, 318)',
   boots3: 'translate(21, 374)',
   boots4: 'translate(21, 400)',
-  boots5: 'translate(21, 371)',
+  boots5: 'translate(21, 332)',
   boots6: 'translate(21, 371)',
 };
 
