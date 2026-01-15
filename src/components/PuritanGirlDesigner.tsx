@@ -199,6 +199,42 @@ export default function PuritanGirlDesigner() {
 
         <div>
           <div className="flex items-center justify-between mb-4">
+            <h3 className="text-xs font-bold text-white uppercase tracking-widest">Hair Color</h3>
+          </div>
+          <div className="flex gap-3 mb-3 overflow-x-auto py-2">
+            {PRESET_HAIR_COLORS.map((preset) => (
+              <button
+                key={preset.name}
+                onClick={() => setCurrentDesign({ ...currentDesign, hair_color: preset.color })}
+                className={`w-12 h-12 rounded-full border-4 transition-all flex-shrink-0 ${
+                  currentDesign.hair_color === preset.color
+                    ? 'border-white scale-110'
+                    : 'border-dark-white/30 hover:border-dark-white/50'
+                }`}
+                style={{ backgroundColor: preset.color }}
+                title={preset.name}
+              />
+            ))}
+          </div>
+          <div className="flex items-center gap-2">
+            <input
+              type="color"
+              value={currentDesign.hair_color}
+              onChange={(e) => setCurrentDesign({ ...currentDesign, hair_color: e.target.value })}
+              className="w-12 h-10 rounded-lg cursor-pointer bg-lite-black border-2 border-dark-white/30"
+            />
+            <input
+              type="text"
+              value={currentDesign.hair_color}
+              onChange={(e) => setCurrentDesign({ ...currentDesign, hair_color: e.target.value })}
+              className="flex-1 px-3 py-2 bg-lite-black border-2 border-dark-white/30 rounded-lg text-white text-sm focus:outline-none focus:border-white"
+              placeholder="#8B4513"
+            />
+          </div>
+        </div>
+
+        <div>
+          <div className="flex items-center justify-between mb-4">
             <h3 className="text-xs font-bold text-white uppercase tracking-widest">Bangs</h3>
           </div>
           <div className="grid grid-cols-2 gap-3">
@@ -236,42 +272,6 @@ export default function PuritanGirlDesigner() {
                 {dress.name}
               </button>
             ))}
-          </div>
-        </div>
-
-        <div>
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-xs font-bold text-white uppercase tracking-widest">Hair Color</h3>
-          </div>
-          <div className="flex gap-3 mb-3 overflow-x-auto py-2">
-            {PRESET_HAIR_COLORS.map((preset) => (
-              <button
-                key={preset.name}
-                onClick={() => setCurrentDesign({ ...currentDesign, hair_color: preset.color })}
-                className={`w-12 h-12 rounded-full border-4 transition-all flex-shrink-0 ${
-                  currentDesign.hair_color === preset.color
-                    ? 'border-white scale-110'
-                    : 'border-dark-white/30 hover:border-dark-white/50'
-                }`}
-                style={{ backgroundColor: preset.color }}
-                title={preset.name}
-              />
-            ))}
-          </div>
-          <div className="flex items-center gap-2">
-            <input
-              type="color"
-              value={currentDesign.hair_color}
-              onChange={(e) => setCurrentDesign({ ...currentDesign, hair_color: e.target.value })}
-              className="w-12 h-10 rounded-lg cursor-pointer bg-lite-black border-2 border-dark-white/30"
-            />
-            <input
-              type="text"
-              value={currentDesign.hair_color}
-              onChange={(e) => setCurrentDesign({ ...currentDesign, hair_color: e.target.value })}
-              className="flex-1 px-3 py-2 bg-lite-black border-2 border-dark-white/30 rounded-lg text-white text-sm focus:outline-none focus:border-white"
-              placeholder="#8B4513"
-            />
           </div>
         </div>
 
