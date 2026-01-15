@@ -453,7 +453,7 @@ export default function LayeredCharacter({
 
     const wrapper = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     wrapper.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-    wrapper.setAttribute('viewBox', '0 -20 259 475');
+    wrapper.setAttribute('viewBox', '-20 -20 300 475');
     wrapper.setAttribute('width', '100%');
     wrapper.setAttribute('height', '100%');
 
