@@ -251,7 +251,7 @@ export default function PuritanGirlDesigner() {
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-xs font-bold text-white uppercase tracking-widest">Dress</h3>
           </div>
-          <div className="flex gap-3 overflow-x-auto pb-2">
+          <div className="flex gap-3 overflow-x-auto pb-2 bg-worm p-3 rounded-2xl">
             {DRESS_STYLES.map((dress) => (
               <button
                 key={dress.id}
