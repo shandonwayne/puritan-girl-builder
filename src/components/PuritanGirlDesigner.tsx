@@ -90,6 +90,7 @@ export default function PuritanGirlDesigner() {
     bangs_style: 'bangs1',
     boots_style: 'boots1',
   });
+  const [showCustomHairColor, setShowCustomHairColor] = useState(false);
 
   return (
     <div className="flex gap-0 h-[calc(100vh-8rem-100px)]">
@@ -215,22 +216,31 @@ export default function PuritanGirlDesigner() {
                 title={preset.name}
               />
             ))}
+            <button
+              onClick={() => setShowCustomHairColor(!showCustomHairColor)}
+              className="w-12 h-12 rounded-full border-4 border-dark-white/30 hover:border-dark-white/50 bg-lite-black flex items-center justify-center text-white text-2xl font-light transition-all flex-shrink-0"
+              title="Custom color"
+            >
+              +
+            </button>
           </div>
-          <div className="flex items-center gap-2">
-            <input
-              type="color"
-              value={currentDesign.hair_color}
-              onChange={(e) => setCurrentDesign({ ...currentDesign, hair_color: e.target.value })}
-              className="w-12 h-10 rounded-lg cursor-pointer bg-lite-black border-2 border-dark-white/30"
-            />
-            <input
-              type="text"
-              value={currentDesign.hair_color}
-              onChange={(e) => setCurrentDesign({ ...currentDesign, hair_color: e.target.value })}
-              className="flex-1 px-3 py-2 bg-lite-black border-2 border-dark-white/30 rounded-lg text-white text-sm focus:outline-none focus:border-white"
-              placeholder="#8B4513"
-            />
-          </div>
+          {showCustomHairColor && (
+            <div className="flex items-center gap-2">
+              <input
+                type="color"
+                value={currentDesign.hair_color}
+                onChange={(e) => setCurrentDesign({ ...currentDesign, hair_color: e.target.value })}
+                className="w-12 h-10 rounded-lg cursor-pointer bg-lite-black border-2 border-dark-white/30"
+              />
+              <input
+                type="text"
+                value={currentDesign.hair_color}
+                onChange={(e) => setCurrentDesign({ ...currentDesign, hair_color: e.target.value })}
+                className="flex-1 px-3 py-2 bg-lite-black border-2 border-dark-white/30 rounded-lg text-white text-sm focus:outline-none focus:border-white"
+                placeholder="#8B4513"
+              />
+            </div>
+          )}
         </div>
 
         <div>
