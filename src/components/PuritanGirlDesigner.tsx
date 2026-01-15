@@ -217,14 +217,7 @@ export default function PuritanGirlDesigner() {
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-xs font-bold text-white uppercase tracking-widest">Hair Color</h3>
           </div>
-          <div className="relative group">
-            <button
-              onClick={() => scroll(hairColorScrollRef, 'left')}
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
-              aria-label="Scroll left"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
+          <div className="relative">
             <div ref={hairColorScrollRef} className="flex gap-3 mb-3 overflow-x-auto py-2 scrollbar-hide">
               {PRESET_HAIR_COLORS.map((preset) => (
                 <button
@@ -247,13 +240,6 @@ export default function PuritanGirlDesigner() {
                 +
               </button>
             </div>
-            <button
-              onClick={() => scroll(hairColorScrollRef, 'right')}
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
-              aria-label="Scroll right"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
           </div>
           {showCustomHairColor && (
             <div className="flex items-center gap-2">
@@ -350,14 +336,7 @@ export default function PuritanGirlDesigner() {
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-xs font-bold text-white uppercase tracking-widest">Dress Color</h3>
           </div>
-          <div className="relative group">
-            <button
-              onClick={() => scroll(dressColorScrollRef, 'left')}
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
-              aria-label="Scroll left"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
+          <div className="relative">
             <div ref={dressColorScrollRef} className="flex gap-3 mb-3 overflow-x-auto py-2 scrollbar-hide">
               {PRESET_DRESS_COLORS.map((preset) => (
                 <button
@@ -383,13 +362,6 @@ export default function PuritanGirlDesigner() {
                 +
               </button>
             </div>
-            <button
-              onClick={() => scroll(dressColorScrollRef, 'right')}
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
-              aria-label="Scroll right"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
           </div>
           {showCustomDressColor && (
             <div className="flex items-center gap-2">
