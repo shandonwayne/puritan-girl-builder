@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import LayeredCharacter from './LayeredCharacter';
+import { ChevronLeft, ChevronRight, Download } from 'lucide-react';
+import LayeredCharacter, { LayeredCharacterRef } from './LayeredCharacter';
 import face1SVG from '../assets/faces/face_1.svg';
 import face2SVG from '../assets/faces/face_2.svg';
 import face3SVG from '../assets/faces/face_3.svg';
@@ -108,6 +108,7 @@ export default function PuritanGirlDesigner() {
   const [showCustomHairColor, setShowCustomHairColor] = useState(false);
   const [showCustomDressColor, setShowCustomDressColor] = useState(false);
 
+  const characterRef = useRef<LayeredCharacterRef>(null);
   const skinToneScrollRef = useRef<HTMLDivElement>(null);
   const hairColorScrollRef = useRef<HTMLDivElement>(null);
   const dressStyleScrollRef = useRef<HTMLDivElement>(null);
@@ -128,6 +129,7 @@ export default function PuritanGirlDesigner() {
       <div className="flex-1 rounded-l-2xl flex items-center justify-center px-32 py-12" style={{ backgroundColor: '#B2B33A' }}>
         <div className="relative w-full max-w-md aspect-[259/455]">
           <LayeredCharacter
+            ref={characterRef}
             skinTone={currentDesign.skin_tone}
             faceType={currentDesign.face_type}
             hairstyle={currentDesign.hairstyle}
@@ -445,6 +447,16 @@ export default function PuritanGirlDesigner() {
               </button>
             ))}
           </div>
+        </div>
+
+        <div className="pt-4">
+          <button
+            onClick={() => characterRef.current?.downloadImage()}
+            className="w-full h-16 rounded-2xl bg-lime hover:bg-lime/90 text-black font-bold text-lg uppercase tracking-wide transition-all flex items-center justify-center gap-3 shadow-lg hover:shadow-xl"
+          >
+            <Download className="w-6 h-6" />
+            Download High-Res Image
+          </button>
         </div>
 
       </div>

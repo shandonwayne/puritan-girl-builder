@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, forwardRef, useImperativeHandle } from 'react';
 import baseGirlSVG from '../assets/base-girl.svg';
 import hairstyle1SVG from '../assets/hairstyle_1.svg';
 import hairstyle2SVG from '../assets/hairstyle_2.svg';
@@ -274,7 +274,11 @@ const createSVGGradient = (gradientId: string, parsedGradient: ParsedGradient): 
   return gradient;
 };
 
-export default function LayeredCharacter({
+export interface LayeredCharacterRef {
+  downloadImage: () => void;
+}
+
+const LayeredCharacter = forwardRef<LayeredCharacterRef, LayeredCharacterProps>(({
   skinTone,
   faceType,
   hairstyle,
@@ -284,7 +288,7 @@ export default function LayeredCharacter({
   bangsStyle = '',
   bootsStyle = '',
   bootsColor = '#1A1A1A',
-}: LayeredCharacterProps) {
+}, ref) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const baseSVGRef = useRef<string>('');
   const faceSVGRef = useRef<string>('');
@@ -292,6 +296,50 @@ export default function LayeredCharacter({
   const dressSVGRef = useRef<string>('');
   const bangsSVGRef = useRef<string>('');
   const bootsSVGRef = useRef<string>('');
+
+  useImperativeHandle(ref, () => ({
+    downloadImage: () => {
+      if (!containerRef.current) return;
+
+      const svgElement = containerRef.current.querySelector('svg');
+      if (!svgElement) return;
+
+      const svgClone = svgElement.cloneNode(true) as SVGElement;
+      svgClone.setAttribute('width', '2000');
+      svgClone.setAttribute('height', '3500');
+
+      const svgData = new XMLSerializer().serializeToString(svgClone);
+      const svgBlob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
+      const url = URL.createObjectURL(svgBlob);
+
+      const canvas = document.createElement('canvas');
+      canvas.width = 2000;
+      canvas.height = 3500;
+      const ctx = canvas.getContext('2d');
+
+      const img = new Image();
+      img.onload = () => {
+        if (ctx) {
+          ctx.fillStyle = 'transparent';
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+          ctx.drawImage(img, 0, 0);
+
+          canvas.toBlob((blob) => {
+            if (blob) {
+              const pngUrl = URL.createObjectURL(blob);
+              const link = document.createElement('a');
+              link.download = `puritan-girl-${Date.now()}.png`;
+              link.href = pngUrl;
+              link.click();
+              URL.revokeObjectURL(pngUrl);
+            }
+          }, 'image/png');
+        }
+        URL.revokeObjectURL(url);
+      };
+      img.src = url;
+    }
+  }));
 
   useEffect(() => {
     const loadSVGs = async () => {
@@ -611,4 +659,8 @@ export default function LayeredCharacter({
       className="w-full h-full flex items-center justify-center"
     />
   );
-}
+});
+
+LayeredCharacter.displayName = 'LayeredCharacter';
+
+export default LayeredCharacter;
