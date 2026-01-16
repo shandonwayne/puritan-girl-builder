@@ -347,19 +347,17 @@ export default function PuritanGirlDesigner() {
                       : 'bg-worm/90 hover:bg-worm'
                   }`}
                 >
-                  <div
-                    className="h-full w-auto relative"
-                    style={{
-                      filter: currentDesign.dress_style === dress.id
-                        ? 'drop-shadow(0 0 0 #F34C34) drop-shadow(0 0 4px #F34C34) drop-shadow(0 0 8px #F34C34)'
-                        : 'none'
-                    }}
-                  >
+                  <div className="h-full w-auto relative">
                     <img
                       src={dress.image}
                       alt={dress.name}
                       className="h-full w-auto object-contain object-top hover:animate-wobble"
-                      style={{ transformOrigin: 'top center' }}
+                      style={{
+                        transformOrigin: 'top center',
+                        filter: currentDesign.dress_style === dress.id
+                          ? 'brightness(0) saturate(100%) invert(13%) sepia(47%) saturate(1756%) hue-rotate(45deg) brightness(97%) contrast(98%)'
+                          : 'none'
+                      }}
                     />
                   </div>
                 </button>
