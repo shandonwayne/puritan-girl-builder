@@ -338,12 +338,12 @@ export default function PuritanGirlDesigner() {
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
-            <div ref={dressStyleScrollRef} className="flex gap-4 overflow-x-auto pb-2 scrollbar-hide">
+            <div ref={dressStyleScrollRef} className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
               {DRESS_STYLES.map((dress) => (
                 <button
                   key={dress.id}
                   onClick={() => setCurrentDesign({ ...currentDesign, dress_style: dress.id })}
-                  className={`flex-shrink-0 w-44 h-40 rounded-2xl overflow-visible transition-all flex items-start justify-center pt-2 px-2 ${
+                  className={`flex-shrink-0 w-36 h-36 rounded-2xl overflow-visible transition-all flex items-start justify-center pt-2 px-2 ${
                     currentDesign.dress_style === dress.id
                       ? 'bg-worm scale-105'
                       : 'bg-worm/90 hover:bg-worm'
