@@ -19,7 +19,6 @@ import dressApronSVG from '../assets/apron_style.svg';
 import dressLacedSVG from '../assets/laced_bodice.svg';
 import dressClassicSVG from '../assets/classic.svg';
 import dressRuffledSVG from '../assets/ruffled.svg';
-import hangerSVG from '../assets/hanger.svg';
 
 const SKIN_TONES = [
   { id: 'fair', name: 'Fair', color: '#FADADD' },
@@ -342,28 +341,27 @@ export default function PuritanGirlDesigner() {
                 <button
                   key={dress.id}
                   onClick={() => setCurrentDesign({ ...currentDesign, dress_style: dress.id })}
-                  className={`flex-shrink-0 w-32 h-40 rounded-2xl overflow-visible transition-all flex items-center justify-center pt-2 px-2 ${
+                  className={`flex-shrink-0 w-32 h-40 rounded-2xl overflow-visible transition-all flex items-start justify-center pt-2 px-2 ${
                     currentDesign.dress_style === dress.id
                       ? 'bg-worm scale-105'
                       : 'bg-worm/90 hover:bg-worm'
                   }`}
                 >
-                  {currentDesign.dress_style === dress.id ? (
+                  <div
+                    className="h-full w-auto relative"
+                    style={{
+                      filter: currentDesign.dress_style === dress.id
+                        ? 'drop-shadow(0 0 0 #F34C34) drop-shadow(0 0 4px #F34C34) drop-shadow(0 0 8px #F34C34)'
+                        : 'none'
+                    }}
+                  >
                     <img
-                      src={hangerSVG}
-                      alt="Selected"
-                      className="w-20 h-20 object-contain"
+                      src={dress.image}
+                      alt={dress.name}
+                      className="h-full w-auto object-contain object-top hover:animate-wobble"
+                      style={{ transformOrigin: 'top center' }}
                     />
-                  ) : (
-                    <div className="h-full w-auto relative">
-                      <img
-                        src={dress.image}
-                        alt={dress.name}
-                        className="h-full w-auto object-contain object-top hover:animate-wobble"
-                        style={{ transformOrigin: 'top center' }}
-                      />
-                    </div>
-                  )}
+                  </div>
                 </button>
               ))}
             </div>
