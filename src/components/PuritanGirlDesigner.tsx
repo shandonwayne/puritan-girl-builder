@@ -29,7 +29,7 @@ const SKIN_TONES = [
   { id: 'deeptan', name: 'Deep Tan', color: '#5C3A21' },
   { id: 'brown', name: 'Brown', color: '#3E2D25' },
   { id: 'deepbrown', name: 'Deep Brown', color: '#2B1810' },
-  { id: 'palegreen', name: 'Pale Green', color: '#D4F1D4' },
+  { id: 'palegreen', name: 'Pale Green', color: '#8BC98B' },
   { id: 'palelavender', name: 'Pale Lavender', color: '#E6D9F5' },
 ];
 
