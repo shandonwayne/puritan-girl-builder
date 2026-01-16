@@ -338,7 +338,7 @@ export default function PuritanGirlDesigner() {
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
-            <div ref={dressStyleScrollRef} className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+            <div ref={dressStyleScrollRef} className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide max-w-[296px] mx-auto">
               {DRESS_STYLES.map((dress) => (
                 <button
                   key={dress.id}
