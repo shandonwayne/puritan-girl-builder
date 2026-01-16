@@ -116,7 +116,7 @@ export default function PuritanGirlDesigner() {
 
   const scroll = (ref: React.RefObject<HTMLDivElement>, direction: 'left' | 'right') => {
     if (ref.current) {
-      const scrollAmount = 200;
+      const scrollAmount = ref === dressStyleScrollRef ? 304 : 200;
       ref.current.scrollBy({
         left: direction === 'left' ? -scrollAmount : scrollAmount,
         behavior: 'smooth'
@@ -330,7 +330,7 @@ export default function PuritanGirlDesigner() {
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-xs font-bold text-white uppercase tracking-widest">Dress</h3>
           </div>
-          <div className="relative group bg-worm py-5 px-3 rounded-2xl">
+          <div className="relative group bg-worm py-5 px-3 rounded-2xl overflow-hidden">
             <button
               onClick={() => scroll(dressStyleScrollRef, 'left')}
               className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
@@ -338,12 +338,12 @@ export default function PuritanGirlDesigner() {
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
-            <div ref={dressStyleScrollRef} className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide max-w-[296px] mx-auto">
+            <div ref={dressStyleScrollRef} className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide w-[296px] mx-auto scroll-smooth snap-x snap-mandatory">
               {DRESS_STYLES.map((dress) => (
                 <button
                   key={dress.id}
                   onClick={() => setCurrentDesign({ ...currentDesign, dress_style: dress.id })}
-                  className={`flex-shrink-0 w-36 h-36 rounded-2xl overflow-visible transition-all flex items-start justify-center pt-2 px-2 ${
+                  className={`flex-shrink-0 w-36 h-36 rounded-2xl overflow-visible transition-all flex items-start justify-center pt-2 px-2 snap-start ${
                     currentDesign.dress_style === dress.id
                       ? 'bg-worm scale-105'
                       : 'bg-worm/90 hover:bg-worm'
