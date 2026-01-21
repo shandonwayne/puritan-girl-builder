@@ -455,7 +455,7 @@ export default function PuritanGirlDesigner() {
             className="w-full h-16 rounded-2xl bg-lime hover:bg-lime/90 text-black font-bold text-lg uppercase tracking-wide transition-all flex items-center justify-center gap-3 shadow-lg hover:shadow-xl"
           >
             <Download className="w-6 h-6" />
-            Download High-Res Image
+            Download Image
           </button>
         </div>
 
