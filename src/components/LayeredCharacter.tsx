@@ -2,6 +2,8 @@ import { useEffect, useRef, forwardRef, useImperativeHandle } from 'react';
 import baseGirlSVG from '../assets/base-girl.svg';
 import hairstyle1SVG from '../assets/hairstyle-1.svg';
 import hairstyle2SVG from '../assets/hairstyle-2.svg';
+import hairstyle3SVG from '../assets/hairstyle-3.svg';
+import hairstyle4SVG from '../assets/hairstyle-4.svg';
 import dress1SVG from '../assets/dress_1.svg';
 import dress2SVG from '../assets/dress_2.svg';
 import dress3SVG from '../assets/dress_3.svg';
@@ -39,11 +41,15 @@ interface LayeredCharacterProps {
 const HAIRSTYLE_MAP: Record<string, string> = {
   style1: hairstyle1SVG,
   style2: hairstyle2SVG,
+  style3: hairstyle3SVG,
+  style4: hairstyle4SVG,
 };
 
 const HAIRSTYLE_POSITIONS: Record<string, string> = {
   style1: 'translate(30, -18)',
   style2: 'translate(30, -18)',
+  style3: 'translate(30, -18)',
+  style4: 'translate(8, -18)',
 };
 
 const DRESS_MAP: Record<string, string> = {

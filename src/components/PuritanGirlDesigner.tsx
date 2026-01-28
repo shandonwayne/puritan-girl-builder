@@ -9,6 +9,10 @@ import hairstyle1SVG from '../assets/hairstyle-1.svg';
 import hairstyle1SelectedSVG from '../assets/hairstyle-1-selected.svg';
 import hairstyle2SVG from '../assets/hairstyle-2.svg';
 import hairstyle2SelectedSVG from '../assets/hairstyle-2-selected.svg';
+import hairstyle3SVG from '../assets/hairstyle-3.svg';
+import hairstyle3SelectedSVG from '../assets/hairstyle-3-selected.svg';
+import hairstyle4SVG from '../assets/hairstyle-4.svg';
+import hairstyle4SelectedSVG from '../assets/hairstyle-4-selected.svg';
 import dressSimpleBodiceSVG from '../assets/simple_bodice.svg';
 import dressCollaredSVG from '../assets/collared.svg';
 import dressApronSVG from '../assets/apron_style.svg';
@@ -49,6 +53,8 @@ const FACE_TYPES = [
 const HAIRSTYLES = [
   { id: 'style1', name: 'Style 1', image: hairstyle1SVG, selectedImage: hairstyle1SelectedSVG },
   { id: 'style2', name: 'Style 2', image: hairstyle2SVG, selectedImage: hairstyle2SelectedSVG },
+  { id: 'style3', name: 'Style 3', image: hairstyle3SVG, selectedImage: hairstyle3SelectedSVG },
+  { id: 'style4', name: 'Style 4', image: hairstyle4SVG, selectedImage: hairstyle4SelectedSVG },
 ];
 
 const DRESS_STYLES = [
@@ -221,38 +227,27 @@ export default function PuritanGirlDesigner() {
                   <ChevronLeft className="w-6 h-6" />
                 </button>
 
-                <div className="flex gap-6 items-end">
-                  <button
-                    onClick={() => setCurrentDesign({ ...currentDesign, hairstyle: HAIRSTYLES[0].id })}
-                    className="relative group"
-                  >
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-28 h-28 rounded-full bg-[#AC7ED3] opacity-60"></div>
-                    </div>
-                    <div className="relative w-32 h-32 flex items-center justify-center transition-transform group-hover:scale-105">
-                      <img
-                        src={currentDesign.hairstyle === HAIRSTYLES[0].id ? HAIRSTYLES[0].selectedImage : HAIRSTYLES[0].image}
-                        alt={HAIRSTYLES[0].name}
-                        className="h-24 w-auto object-contain"
-                      />
-                    </div>
-                  </button>
-
-                  <button
-                    onClick={() => setCurrentDesign({ ...currentDesign, hairstyle: HAIRSTYLES[1].id })}
-                    className="relative group"
-                  >
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-28 h-28 rounded-full bg-[#AC7ED3] opacity-60"></div>
-                    </div>
-                    <div className="relative w-32 h-32 flex items-center justify-center transition-transform group-hover:scale-105">
-                      <img
-                        src={currentDesign.hairstyle === HAIRSTYLES[1].id ? HAIRSTYLES[1].selectedImage : HAIRSTYLES[1].image}
-                        alt={HAIRSTYLES[1].name}
-                        className="h-24 w-auto object-contain"
-                      />
-                    </div>
-                  </button>
+                <div className="grid grid-cols-2 gap-6">
+                  {HAIRSTYLES.map((style) => (
+                    <button
+                      key={style.id}
+                      onClick={() => setCurrentDesign({ ...currentDesign, hairstyle: style.id })}
+                      className="relative group"
+                    >
+                      {currentDesign.hairstyle !== style.id && (
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <div className="w-28 h-28 rounded-full bg-[#AC7ED3] opacity-60"></div>
+                        </div>
+                      )}
+                      <div className="relative w-32 h-32 flex items-center justify-center transition-transform group-hover:scale-105">
+                        <img
+                          src={currentDesign.hairstyle === style.id ? style.selectedImage : style.image}
+                          alt={style.name}
+                          className="h-24 w-auto object-contain"
+                        />
+                      </div>
+                    </button>
+                  ))}
                 </div>
 
                 <button
