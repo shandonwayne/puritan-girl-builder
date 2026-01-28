@@ -5,13 +5,10 @@ import face1SVG from '../assets/faces/face_1.svg';
 import face2SVG from '../assets/faces/face_2.svg';
 import face3SVG from '../assets/faces/face_3.svg';
 import face4SVG from '../assets/faces/face_4.svg';
-import hairstyle1Btn from '../assets/hairstyle_1_btn.png';
-import hairstyle2Btn from '../assets/hairstyle_2_btn.png';
-import hairstyle3Btn from '../assets/hairstyle_3_btn.png';
-import hairstyle4SVG from '../assets/hairstyle_4.svg';
-import hairstyle5SVG from '../assets/hairstyle_5.svg';
-import hairstyle6SVG from '../assets/hairstyle_6.svg';
-import hairstyle7SVG from '../assets/hairstyle_7.svg';
+import hairstyle1SVG from '../assets/hairstyle-1.svg';
+import hairstyle1SelectedSVG from '../assets/hairstyle-1-selected.svg';
+import hairstyle2SVG from '../assets/hairstyle-2.svg';
+import hairstyle2SelectedSVG from '../assets/hairstyle-2-selected.svg';
 import dressSimpleBodiceSVG from '../assets/simple_bodice.svg';
 import dressCollaredSVG from '../assets/collared.svg';
 import dressApronSVG from '../assets/apron_style.svg';
@@ -50,13 +47,8 @@ const FACE_TYPES = [
 ];
 
 const HAIRSTYLES = [
-  { id: 'style1', name: 'Braided Bun', image: hairstyle1Btn },
-  { id: 'style2', name: 'Center Part', image: hairstyle2Btn },
-  { id: 'style3', name: 'Side Swept', image: hairstyle3Btn },
-  { id: 'style4', name: 'Style 4', image: hairstyle4SVG },
-  { id: 'style5', name: 'Style 5', image: hairstyle5SVG },
-  { id: 'style6', name: 'Style 6', image: hairstyle6SVG },
-  { id: 'style7', name: 'Style 7', image: hairstyle7SVG },
+  { id: 'style1', name: 'Style 1', image: hairstyle1SVG, selectedImage: hairstyle1SelectedSVG },
+  { id: 'style2', name: 'Style 2', image: hairstyle2SVG, selectedImage: hairstyle2SelectedSVG },
 ];
 
 const DRESS_STYLES = [
@@ -214,55 +206,73 @@ export default function PuritanGirlDesigner() {
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-xs font-bold text-white uppercase tracking-widest">Hair Style</h3>
           </div>
-          <div className="relative bg-worm rounded-2xl p-6">
-            <div className="flex items-center justify-center gap-4">
-              <button
-                onClick={() => {
-                  const currentIndex = HAIRSTYLES.findIndex(s => s.id === currentDesign.hairstyle);
-                  const prevIndex = currentIndex === 0 ? HAIRSTYLES.length - 1 : currentIndex - 1;
-                  setCurrentDesign({ ...currentDesign, hairstyle: HAIRSTYLES[prevIndex].id });
-                }}
-                className="bg-black/50 hover:bg-black/70 text-white rounded-full p-2 transition-colors"
-                aria-label="Previous hairstyle"
-              >
-                <ChevronLeft className="w-6 h-6" />
-              </button>
-
-              <div className="w-40 h-40 rounded-2xl overflow-hidden bg-worm/50 flex items-center justify-center">
-                <img
-                  src={HAIRSTYLES.find(s => s.id === currentDesign.hairstyle)?.image}
-                  alt="Current hairstyle"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-
-              <button
-                onClick={() => {
-                  const currentIndex = HAIRSTYLES.findIndex(s => s.id === currentDesign.hairstyle);
-                  const nextIndex = currentIndex === HAIRSTYLES.length - 1 ? 0 : currentIndex + 1;
-                  setCurrentDesign({ ...currentDesign, hairstyle: HAIRSTYLES[nextIndex].id });
-                }}
-                className="bg-black/50 hover:bg-black/70 text-white rounded-full p-2 transition-colors"
-                aria-label="Next hairstyle"
-              >
-                <ChevronRight className="w-6 h-6" />
-              </button>
-            </div>
-
-            <div className="flex items-center justify-center gap-2 mt-4">
-              {HAIRSTYLES.map((style, index) => (
+          <div className="relative rounded-2xl overflow-hidden" style={{ backgroundColor: '#D8C3E6' }}>
+            <div className="relative pt-8 pb-20 px-8">
+              <div className="flex items-center justify-center gap-8">
                 <button
-                  key={style.id}
-                  onClick={() => setCurrentDesign({ ...currentDesign, hairstyle: style.id })}
-                  className={`h-2 rounded-full transition-all ${
-                    currentDesign.hairstyle === style.id
-                      ? 'w-8 bg-white'
-                      : 'w-2 bg-white/30 hover:bg-white/50'
-                  }`}
-                  aria-label={`Select hairstyle ${index + 1}`}
-                />
-              ))}
+                  onClick={() => {
+                    const currentIndex = HAIRSTYLES.findIndex(s => s.id === currentDesign.hairstyle);
+                    const prevIndex = currentIndex === 0 ? HAIRSTYLES.length - 1 : currentIndex - 1;
+                    setCurrentDesign({ ...currentDesign, hairstyle: HAIRSTYLES[prevIndex].id });
+                  }}
+                  className="bg-white/80 hover:bg-white text-[#8B5DAF] rounded-full p-2 transition-colors z-10"
+                  aria-label="Previous hairstyle"
+                >
+                  <ChevronLeft className="w-6 h-6" />
+                </button>
+
+                <div className="flex gap-6 items-end">
+                  <button
+                    onClick={() => setCurrentDesign({ ...currentDesign, hairstyle: HAIRSTYLES[0].id })}
+                    className="relative group"
+                  >
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-28 h-28 rounded-full bg-[#AC7ED3] opacity-60"></div>
+                    </div>
+                    <div className="relative w-32 h-32 flex items-center justify-center transition-transform group-hover:scale-105">
+                      <img
+                        src={currentDesign.hairstyle === HAIRSTYLES[0].id ? HAIRSTYLES[0].selectedImage : HAIRSTYLES[0].image}
+                        alt={HAIRSTYLES[0].name}
+                        className="h-24 w-auto object-contain"
+                      />
+                    </div>
+                  </button>
+
+                  <button
+                    onClick={() => setCurrentDesign({ ...currentDesign, hairstyle: HAIRSTYLES[1].id })}
+                    className="relative group"
+                  >
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-28 h-28 rounded-full bg-[#AC7ED3] opacity-60"></div>
+                    </div>
+                    <div className="relative w-32 h-32 flex items-center justify-center transition-transform group-hover:scale-105">
+                      <img
+                        src={currentDesign.hairstyle === HAIRSTYLES[1].id ? HAIRSTYLES[1].selectedImage : HAIRSTYLES[1].image}
+                        alt={HAIRSTYLES[1].name}
+                        className="h-24 w-auto object-contain"
+                      />
+                    </div>
+                  </button>
+                </div>
+
+                <button
+                  onClick={() => {
+                    const currentIndex = HAIRSTYLES.findIndex(s => s.id === currentDesign.hairstyle);
+                    const nextIndex = currentIndex === HAIRSTYLES.length - 1 ? 0 : currentIndex + 1;
+                    setCurrentDesign({ ...currentDesign, hairstyle: HAIRSTYLES[nextIndex].id });
+                  }}
+                  className="bg-white/80 hover:bg-white text-[#8B5DAF] rounded-full p-2 transition-colors z-10"
+                  aria-label="Next hairstyle"
+                >
+                  <ChevronRight className="w-6 h-6" />
+                </button>
+              </div>
             </div>
+
+            <div
+              className="absolute bottom-0 left-0 right-0 h-12 rounded-full mx-8"
+              style={{ backgroundColor: '#8B5DAF' }}
+            ></div>
           </div>
         </div>
 
