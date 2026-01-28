@@ -17,6 +17,10 @@ import hairstyle5SVG from '../assets/hairstyle-5.svg';
 import hairstyle5SelectedSVG from '../assets/hairstyle-5-selected.svg';
 import hairstyle6SVG from '../assets/hairstyle-6.svg';
 import hairstyle6SelectedSVG from '../assets/hairstyle-6-selected.svg';
+import hairstyle7SVG from '../assets/hairstyle-7.svg';
+import hairstyle7SelectedSVG from '../assets/hairstyle-7-selected.svg';
+import hairstyle8SVG from '../assets/hairstyle-8.svg';
+import hairstyle8SelectedSVG from '../assets/hairstyle-8-selected.svg';
 import dressSimpleBodiceSVG from '../assets/simple_bodice.svg';
 import dressCollaredSVG from '../assets/collared.svg';
 import dressApronSVG from '../assets/apron_style.svg';
@@ -61,6 +65,8 @@ const HAIRSTYLES = [
   { id: 'style4', name: 'Style 4', image: hairstyle4SVG, selectedImage: hairstyle4SelectedSVG },
   { id: 'style5', name: 'Style 5', image: hairstyle5SVG, selectedImage: hairstyle5SelectedSVG },
   { id: 'style6', name: 'Style 6', image: hairstyle6SVG, selectedImage: hairstyle6SelectedSVG },
+  { id: 'style7', name: 'Style 7', image: hairstyle7SVG, selectedImage: hairstyle7SelectedSVG },
+  { id: 'style8', name: 'Style 8', image: hairstyle8SVG, selectedImage: hairstyle8SelectedSVG },
 ];
 
 const DRESS_STYLES = [

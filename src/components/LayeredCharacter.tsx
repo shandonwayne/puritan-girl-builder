@@ -6,6 +6,8 @@ import hairstyle3SVG from '../assets/hairstyle-3.svg';
 import hairstyle4SVG from '../assets/hairstyle-4.svg';
 import hairstyle5SVG from '../assets/hairstyle-5.svg';
 import hairstyle6SVG from '../assets/hairstyle-6.svg';
+import hairstyle7SVG from '../assets/hairstyle-7.svg';
+import hairstyle8SVG from '../assets/hairstyle-8.svg';
 import dress1SVG from '../assets/dress_1.svg';
 import dress2SVG from '../assets/dress_2.svg';
 import dress3SVG from '../assets/dress_3.svg';
@@ -47,6 +49,8 @@ const HAIRSTYLE_MAP: Record<string, string> = {
   style4: hairstyle4SVG,
   style5: hairstyle5SVG,
   style6: hairstyle6SVG,
+  style7: hairstyle7SVG,
+  style8: hairstyle8SVG,
 };
 
 const HAIRSTYLE_POSITIONS: Record<string, string> = {
@@ -56,6 +60,19 @@ const HAIRSTYLE_POSITIONS: Record<string, string> = {
   style4: 'translate(8, -18)',
   style5: 'translate(18, -18)',
   style6: 'translate(18, -18)',
+  style7: 'translate(18, -18)',
+  style8: 'translate(30, -18)',
+};
+
+const HAIRSTYLE_SCALES: Record<string, number> = {
+  style1: 1.0,
+  style2: 1.0,
+  style3: 1.0,
+  style4: 1.0,
+  style5: 1.0,
+  style6: 1.0,
+  style7: 0.78,
+  style8: 1.0,
 };
 
 const DRESS_MAP: Record<string, string> = {
@@ -521,7 +538,26 @@ const LayeredCharacter = forwardRef<LayeredCharacterRef, LayeredCharacterProps>(
 
     if (hairSVG) {
       const hairGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-      hairGroup.setAttribute('transform', HAIRSTYLE_POSITIONS[hairstyle] || 'translate(31.5, -20)');
+      const position = HAIRSTYLE_POSITIONS[hairstyle] || 'translate(31.5, -20)';
+      const scale = HAIRSTYLE_SCALES[hairstyle] || 1.0;
+
+      if (scale !== 1.0) {
+        const translateMatch = position.match(/translate\(([^,]+),\s*([^)]+)\)/);
+        if (translateMatch) {
+          const x = parseFloat(translateMatch[1]);
+          const y = parseFloat(translateMatch[2]);
+          const centerX = 130;
+          const centerY = 80;
+          const scaledX = x + (centerX - x) * (1 - scale);
+          const scaledY = y + (centerY - y) * (1 - scale);
+          hairGroup.setAttribute('transform', `translate(${scaledX}, ${scaledY}) scale(${scale})`);
+        } else {
+          hairGroup.setAttribute('transform', `${position} scale(${scale})`);
+        }
+      } else {
+        hairGroup.setAttribute('transform', position);
+      }
+
       const hairContent = hairSVG.querySelector('g');
       if (hairContent) {
         hairGroup.appendChild(hairContent.cloneNode(true));
