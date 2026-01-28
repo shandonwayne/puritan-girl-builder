@@ -169,10 +169,10 @@ export default function PuritanGirlDesigner() {
                 <button
                   key={tone.id}
                   onClick={() => setCurrentDesign({ ...currentDesign, skin_tone: tone.color })}
-                  className={`w-[55px] h-[55px] rounded-full border-4 transition-all flex-shrink-0 ${
+                  className={`w-[55px] h-[55px] rounded-full transition-all flex-shrink-0 ${
                     currentDesign.skin_tone === tone.color
-                      ? 'border-white scale-110'
-                      : 'border-dark-white/30 hover:border-dark-white/50'
+                      ? 'border-4 border-white scale-110'
+                      : ''
                   }`}
                   style={{ backgroundColor: tone.color }}
                   title={tone.name}
@@ -276,10 +276,10 @@ export default function PuritanGirlDesigner() {
                 <button
                   key={preset.name}
                   onClick={() => setCurrentDesign({ ...currentDesign, hair_color: preset.color })}
-                  className={`w-12 h-12 rounded-full border-4 transition-all flex-shrink-0 ${
+                  className={`w-12 h-12 rounded-full transition-all flex-shrink-0 ${
                     currentDesign.hair_color === preset.color
-                      ? 'border-white scale-110'
-                      : 'border-dark-white/30 hover:border-dark-white/50'
+                      ? 'border-4 border-white scale-110'
+                      : ''
                   }`}
                   style={{ backgroundColor: preset.color }}
                   title={preset.name}
@@ -393,10 +393,10 @@ export default function PuritanGirlDesigner() {
                 <button
                   key={preset.name}
                   onClick={() => setCurrentDesign({ ...currentDesign, dress_color: preset.color })}
-                  className={`w-12 h-12 rounded-full border-4 transition-all flex-shrink-0 ${
+                  className={`w-12 h-12 rounded-full transition-all flex-shrink-0 ${
                     currentDesign.dress_color === preset.color
-                      ? 'border-white scale-110'
-                      : 'border-dark-white/30 hover:border-dark-white/50'
+                      ? 'border-4 border-white scale-110'
+                      : ''
                   }`}
                   style={preset.color.startsWith('linear-gradient')
                     ? { backgroundImage: preset.color }
