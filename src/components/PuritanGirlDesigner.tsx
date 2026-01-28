@@ -250,11 +250,6 @@ export default function PuritanGirlDesigner() {
                     onClick={() => setCurrentDesign({ ...currentDesign, hairstyle: style.id })}
                     className="relative group/item flex-shrink-0 snap-start"
                   >
-                    {currentDesign.hairstyle !== style.id && (
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-28 h-28 rounded-full bg-[#AC7ED3] opacity-60"></div>
-                      </div>
-                    )}
                     <div className="relative w-32 h-32 flex items-center justify-center transition-transform group-hover/item:scale-105">
                       <img
                         src={currentDesign.hairstyle === style.id ? style.selectedImage : style.image}
