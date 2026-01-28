@@ -13,6 +13,10 @@ import hairstyle3SVG from '../assets/hairstyle-3.svg';
 import hairstyle3SelectedSVG from '../assets/hairstyle-3-selected.svg';
 import hairstyle4SVG from '../assets/hairstyle-4.svg';
 import hairstyle4SelectedSVG from '../assets/hairstyle-4-selected.svg';
+import hairstyle5SVG from '../assets/hairstyle-5.svg';
+import hairstyle5SelectedSVG from '../assets/hairstyle-5-selected.svg';
+import hairstyle6SVG from '../assets/hairstyle-6.svg';
+import hairstyle6SelectedSVG from '../assets/hairstyle-6-selected.svg';
 import dressSimpleBodiceSVG from '../assets/simple_bodice.svg';
 import dressCollaredSVG from '../assets/collared.svg';
 import dressApronSVG from '../assets/apron_style.svg';
@@ -55,6 +59,8 @@ const HAIRSTYLES = [
   { id: 'style2', name: 'Style 2', image: hairstyle2SVG, selectedImage: hairstyle2SelectedSVG },
   { id: 'style3', name: 'Style 3', image: hairstyle3SVG, selectedImage: hairstyle3SelectedSVG },
   { id: 'style4', name: 'Style 4', image: hairstyle4SVG, selectedImage: hairstyle4SelectedSVG },
+  { id: 'style5', name: 'Style 5', image: hairstyle5SVG, selectedImage: hairstyle5SelectedSVG },
+  { id: 'style6', name: 'Style 6', image: hairstyle6SVG, selectedImage: hairstyle6SelectedSVG },
 ];
 
 const DRESS_STYLES = [
@@ -117,12 +123,18 @@ export default function PuritanGirlDesigner() {
   const characterRef = useRef<LayeredCharacterRef>(null);
   const skinToneScrollRef = useRef<HTMLDivElement>(null);
   const hairColorScrollRef = useRef<HTMLDivElement>(null);
+  const hairstyleScrollRef = useRef<HTMLDivElement>(null);
   const dressStyleScrollRef = useRef<HTMLDivElement>(null);
   const dressColorScrollRef = useRef<HTMLDivElement>(null);
 
   const scroll = (ref: React.RefObject<HTMLDivElement>, direction: 'left' | 'right') => {
     if (ref.current) {
-      const scrollAmount = ref === dressStyleScrollRef ? 304 : 200;
+      let scrollAmount = 200;
+      if (ref === dressStyleScrollRef) {
+        scrollAmount = 304;
+      } else if (ref === hairstyleScrollRef) {
+        scrollAmount = 280;
+      }
       ref.current.scrollBy({
         left: direction === 'left' ? -scrollAmount : scrollAmount,
         behavior: 'smooth'
@@ -212,56 +224,49 @@ export default function PuritanGirlDesigner() {
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-xs font-bold text-white uppercase tracking-widest">Hair Style</h3>
           </div>
-          <div className="relative rounded-2xl overflow-hidden" style={{ backgroundColor: '#D8C3E6' }}>
-            <div className="relative pt-8 pb-20 px-8">
-              <div className="flex items-center justify-center gap-8">
-                <button
-                  onClick={() => {
-                    const currentIndex = HAIRSTYLES.findIndex(s => s.id === currentDesign.hairstyle);
-                    const prevIndex = currentIndex === 0 ? HAIRSTYLES.length - 1 : currentIndex - 1;
-                    setCurrentDesign({ ...currentDesign, hairstyle: HAIRSTYLES[prevIndex].id });
-                  }}
-                  className="bg-white/80 hover:bg-white text-[#8B5DAF] rounded-full p-2 transition-colors z-10"
-                  aria-label="Previous hairstyle"
-                >
-                  <ChevronLeft className="w-6 h-6" />
-                </button>
+          <div className="relative rounded-2xl overflow-hidden group" style={{ backgroundColor: '#D8C3E6' }}>
+            <div className="relative pt-8 pb-20 px-3">
+              <button
+                onClick={() => scroll(hairstyleScrollRef, 'left')}
+                className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white text-[#8B5DAF] rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                aria-label="Scroll left"
+              >
+                <ChevronLeft className="w-6 h-6" />
+              </button>
 
-                <div className="grid grid-cols-2 gap-6">
-                  {HAIRSTYLES.map((style) => (
-                    <button
-                      key={style.id}
-                      onClick={() => setCurrentDesign({ ...currentDesign, hairstyle: style.id })}
-                      className="relative group"
-                    >
-                      {currentDesign.hairstyle !== style.id && (
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <div className="w-28 h-28 rounded-full bg-[#AC7ED3] opacity-60"></div>
-                        </div>
-                      )}
-                      <div className="relative w-32 h-32 flex items-center justify-center transition-transform group-hover:scale-105">
-                        <img
-                          src={currentDesign.hairstyle === style.id ? style.selectedImage : style.image}
-                          alt={style.name}
-                          className="h-24 w-auto object-contain"
-                        />
+              <div
+                ref={hairstyleScrollRef}
+                className="flex gap-6 overflow-x-auto scrollbar-hide w-[280px] mx-auto scroll-smooth snap-x snap-mandatory"
+              >
+                {HAIRSTYLES.map((style) => (
+                  <button
+                    key={style.id}
+                    onClick={() => setCurrentDesign({ ...currentDesign, hairstyle: style.id })}
+                    className="relative group/item flex-shrink-0 snap-start"
+                  >
+                    {currentDesign.hairstyle !== style.id && (
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-28 h-28 rounded-full bg-[#AC7ED3] opacity-60"></div>
                       </div>
-                    </button>
-                  ))}
-                </div>
-
-                <button
-                  onClick={() => {
-                    const currentIndex = HAIRSTYLES.findIndex(s => s.id === currentDesign.hairstyle);
-                    const nextIndex = currentIndex === HAIRSTYLES.length - 1 ? 0 : currentIndex + 1;
-                    setCurrentDesign({ ...currentDesign, hairstyle: HAIRSTYLES[nextIndex].id });
-                  }}
-                  className="bg-white/80 hover:bg-white text-[#8B5DAF] rounded-full p-2 transition-colors z-10"
-                  aria-label="Next hairstyle"
-                >
-                  <ChevronRight className="w-6 h-6" />
-                </button>
+                    )}
+                    <div className="relative w-32 h-32 flex items-center justify-center transition-transform group-hover/item:scale-105">
+                      <img
+                        src={currentDesign.hairstyle === style.id ? style.selectedImage : style.image}
+                        alt={style.name}
+                        className="h-24 w-auto object-contain"
+                      />
+                    </div>
+                  </button>
+                ))}
               </div>
+
+              <button
+                onClick={() => scroll(hairstyleScrollRef, 'right')}
+                className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white text-[#8B5DAF] rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                aria-label="Scroll right"
+              >
+                <ChevronRight className="w-6 h-6" />
+              </button>
             </div>
 
             <div

@@ -4,6 +4,8 @@ import hairstyle1SVG from '../assets/hairstyle-1.svg';
 import hairstyle2SVG from '../assets/hairstyle-2.svg';
 import hairstyle3SVG from '../assets/hairstyle-3.svg';
 import hairstyle4SVG from '../assets/hairstyle-4.svg';
+import hairstyle5SVG from '../assets/hairstyle-5.svg';
+import hairstyle6SVG from '../assets/hairstyle-6.svg';
 import dress1SVG from '../assets/dress_1.svg';
 import dress2SVG from '../assets/dress_2.svg';
 import dress3SVG from '../assets/dress_3.svg';
@@ -43,6 +45,8 @@ const HAIRSTYLE_MAP: Record<string, string> = {
   style2: hairstyle2SVG,
   style3: hairstyle3SVG,
   style4: hairstyle4SVG,
+  style5: hairstyle5SVG,
+  style6: hairstyle6SVG,
 };
 
 const HAIRSTYLE_POSITIONS: Record<string, string> = {
@@ -50,6 +54,8 @@ const HAIRSTYLE_POSITIONS: Record<string, string> = {
   style2: 'translate(30, -18)',
   style3: 'translate(30, -18)',
   style4: 'translate(8, -18)',
+  style5: 'translate(18, -18)',
+  style6: 'translate(18, -18)',
 };
 
 const DRESS_MAP: Record<string, string> = {
