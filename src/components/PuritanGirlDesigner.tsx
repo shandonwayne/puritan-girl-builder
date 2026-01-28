@@ -22,6 +22,11 @@ import bangsSideSweptSVG from '../assets/bangs/bangs-side-swept.svg';
 import bangsCenterSVG from '../assets/bangs/bangs-center.svg';
 import bangsStraightSVG from '../assets/bangs/bangs-straight.svg';
 import bangsWispySVG from '../assets/bangs/bangs-wispy.svg';
+import bootsClassicPNG from '../assets/boots-classic.png';
+import bootsLacedPNG from '../assets/boots-laced.png';
+import bootsBuckledPNG from '../assets/boots-buckled.png';
+import bootsTallPNG from '../assets/boots-tall.png';
+import bootsAnklePNG from '../assets/boots-ankle.png';
 
 const SKIN_TONES = [
   { id: 'fair', name: 'Fair', color: '#FADADD' },
@@ -70,12 +75,12 @@ const BANGS_STYLES = [
 ];
 
 const BOOTS_STYLES = [
-  { id: 'boots1', name: 'Classic' },
-  { id: 'boots2', name: 'Buckled' },
-  { id: 'boots3', name: 'Ankle' },
-  { id: 'boots4', name: 'Tall' },
+  { id: 'boots1', name: 'Classic', image: bootsClassicPNG },
+  { id: 'boots2', name: 'Buckled', image: bootsBuckledPNG },
+  { id: 'boots3', name: 'Ankle', image: bootsAnklePNG },
+  { id: 'boots4', name: 'Tall', image: bootsTallPNG },
   { id: 'boots5', name: 'Simple' },
-  { id: 'boots6', name: 'Laced' },
+  { id: 'boots6', name: 'Laced', image: bootsLacedPNG },
 ];
 
 const PRESET_HAIR_COLORS = [
@@ -439,13 +444,17 @@ export default function PuritanGirlDesigner() {
               <button
                 key={boots.id}
                 onClick={() => setCurrentDesign({ ...currentDesign, boots_style: boots.id })}
-                className={`h-20 rounded-2xl flex items-center justify-center text-xs font-medium transition-all ${
+                className={`h-20 rounded-2xl flex items-center justify-center text-xs font-medium transition-all overflow-hidden ${
                   currentDesign.boots_style === boots.id
-                    ? 'bg-lime text-black scale-105'
+                    ? 'bg-lime text-black scale-105 ring-4 ring-white/20'
                     : 'bg-lite-black text-dark-white hover:bg-lite-black/80'
                 }`}
               >
-                {boots.name}
+                {boots.image ? (
+                  <img src={boots.image} alt={boots.name} className="w-full h-full object-cover" />
+                ) : (
+                  boots.name
+                )}
               </button>
             ))}
           </div>
