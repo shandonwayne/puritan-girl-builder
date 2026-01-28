@@ -19,6 +19,10 @@ import dressApronSVG from '../assets/apron_style.svg';
 import dressLacedSVG from '../assets/laced_bodice.svg';
 import dressClassicSVG from '../assets/classic.svg';
 import dressRuffledSVG from '../assets/ruffled.svg';
+import bangsSideSweptSVG from '../assets/bangs/bangs-side-swept.svg';
+import bangsCenterSVG from '../assets/bangs/bangs-center.svg';
+import bangsStraightSVG from '../assets/bangs/bangs-straight.svg';
+import bangsWispySVG from '../assets/bangs/bangs-wispy.svg';
 
 const SKIN_TONES = [
   { id: 'fair', name: 'Fair', color: '#FADADD' },
@@ -61,10 +65,10 @@ const DRESS_STYLES = [
 ];
 
 const BANGS_STYLES = [
-  { id: 'bangs1', name: 'Side Swept' },
-  { id: 'bangs2', name: 'Center Part' },
-  { id: 'bangs3', name: 'Straight' },
-  { id: 'bangs4', name: 'Wispy' },
+  { id: 'bangs1', name: 'Side Swept', image: bangsSideSweptSVG },
+  { id: 'bangs2', name: 'Center Part', image: bangsCenterSVG },
+  { id: 'bangs3', name: 'Straight', image: bangsStraightSVG },
+  { id: 'bangs4', name: 'Wispy', image: bangsWispySVG },
 ];
 
 const BOOTS_STYLES = [
@@ -314,13 +318,13 @@ export default function PuritanGirlDesigner() {
               <button
                 key={bangs.id}
                 onClick={() => setCurrentDesign({ ...currentDesign, bangs_style: bangs.id })}
-                className={`h-24 rounded-2xl flex items-center justify-center text-sm font-medium transition-all ${
+                className={`h-24 rounded-2xl flex items-center justify-center transition-all overflow-hidden ${
                   currentDesign.bangs_style === bangs.id
-                    ? 'bg-lime text-black scale-105'
-                    : 'bg-lite-black text-dark-white hover:bg-lite-black/80'
+                    ? 'bg-worm scale-105 ring-4 ring-white/20'
+                    : 'bg-worm/90 hover:bg-worm'
                 }`}
               >
-                {bangs.name}
+                <img src={bangs.image} alt={bangs.name} className="w-full h-full object-cover" />
               </button>
             ))}
           </div>
