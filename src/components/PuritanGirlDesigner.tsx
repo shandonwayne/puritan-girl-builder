@@ -27,6 +27,7 @@ import bootsLacedPNG from '../assets/boots-laced.png';
 import bootsBuckledPNG from '../assets/boots-buckled.png';
 import bootsTallPNG from '../assets/boots-tall.png';
 import bootsAnklePNG from '../assets/boots-ankle.png';
+import bootsSimplePNG from '../assets/boots-simple.png';
 
 const SKIN_TONES = [
   { id: 'fair', name: 'Fair', color: '#FADADD' },
@@ -79,7 +80,7 @@ const BOOTS_STYLES = [
   { id: 'boots2', name: 'Buckled', image: bootsBuckledPNG },
   { id: 'boots3', name: 'Ankle', image: bootsAnklePNG },
   { id: 'boots4', name: 'Tall', image: bootsTallPNG },
-  { id: 'boots5', name: 'Simple' },
+  { id: 'boots5', name: 'Simple', image: bootsSimplePNG },
   { id: 'boots6', name: 'Laced', image: bootsLacedPNG },
 ];
 
