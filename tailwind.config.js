@@ -44,6 +44,7 @@ export default {
           lighter: 'rgb(var(--color-ui-border-lighter) / <alpha-value>)',
         },
         'worm': 'rgb(var(--color-worm) / <alpha-value>)',
+        'dress-selected': 'rgb(var(--color-dress-selected) / <alpha-value>)',
         'olive': 'rgb(var(--color-olive) / <alpha-value>)',
         'lime': 'rgb(var(--color-lime) / <alpha-value>)',
         'poppy': 'rgb(var(--color-poppy) / <alpha-value>)',
