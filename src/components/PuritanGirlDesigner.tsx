@@ -5,7 +5,6 @@ import face1SVG from '../assets/faces/face_1.svg';
 import face2SVG from '../assets/faces/face_2.svg';
 import face3SVG from '../assets/faces/face_3.svg';
 import face4SVG from '../assets/faces/face_4.svg';
-import face5SVG from '../assets/faces/face_5.svg';
 import hairstyle1Btn from '../assets/hairstyle_1_btn.png';
 import hairstyle2Btn from '../assets/hairstyle_2_btn.png';
 import hairstyle3Btn from '../assets/hairstyle_3_btn.png';
@@ -42,7 +41,6 @@ const FACE_TYPES = [
   { id: 'face2', image: face2SVG },
   { id: 'face3', image: face3SVG },
   { id: 'face4', image: face4SVG },
-  { id: 'face5', image: face5SVG },
 ];
 
 const HAIRSTYLES = [
@@ -194,7 +192,7 @@ export default function PuritanGirlDesigner() {
               <button
                 key={face.id}
                 onClick={() => setCurrentDesign({ ...currentDesign, face_type: face.id })}
-                className={`w-[55px] h-[55px] rounded-full flex items-center justify-center transition-all overflow-hidden ${
+                className={`w-[70px] h-[70px] rounded-full flex items-center justify-center transition-all overflow-hidden ${
                   currentDesign.face_type === face.id
                     ? 'bg-worm scale-110 ring-4 ring-white/20'
                     : 'bg-worm/90 hover:bg-worm'
