@@ -122,8 +122,6 @@ export default function PuritanGirlDesigner() {
     dress_color: '#1A1A1A',
     bangs_style: 'bangs1',
     boots_style: 'boots1',
-    hairstyle_offset_x: 0,
-    hairstyle_offset_y: 0,
   });
   const [showCustomHairColor, setShowCustomHairColor] = useState(false);
   const [showCustomDressColor, setShowCustomDressColor] = useState(false);
@@ -165,8 +163,6 @@ export default function PuritanGirlDesigner() {
             bangsStyle={currentDesign.bangs_style}
             bootsStyle={currentDesign.boots_style}
             bootsColor={currentDesign.dress_color}
-            hairstyleOffsetX={currentDesign.hairstyle_offset_x}
-            hairstyleOffsetY={currentDesign.hairstyle_offset_y}
           />
         </div>
       </div>
@@ -279,52 +275,6 @@ export default function PuritanGirlDesigner() {
               className="absolute bottom-0 left-0 right-0 h-12 rounded-full mx-8"
               style={{ backgroundColor: '#8B5DAF' }}
             ></div>
-          </div>
-
-          <div className="mt-4">
-            <h4 className="text-xs font-semibold text-white uppercase tracking-widest mb-3">Position Adjustment</h4>
-            <div className="flex gap-4 items-center justify-center">
-              <div className="flex flex-col items-center gap-2">
-                <span className="text-white/70 text-xs">Horizontal</span>
-                <div className="flex gap-2">
-                  <button
-                    onClick={() => setCurrentDesign({ ...currentDesign, hairstyle_offset_x: currentDesign.hairstyle_offset_x - 1 })}
-                    className="bg-white/20 hover:bg-white/30 text-white rounded px-3 py-1 text-sm"
-                  >
-                    ←
-                  </button>
-                  <span className="text-white bg-white/10 rounded px-3 py-1 text-sm min-w-[3rem] text-center">
-                    {currentDesign.hairstyle_offset_x}
-                  </span>
-                  <button
-                    onClick={() => setCurrentDesign({ ...currentDesign, hairstyle_offset_x: currentDesign.hairstyle_offset_x + 1 })}
-                    className="bg-white/20 hover:bg-white/30 text-white rounded px-3 py-1 text-sm"
-                  >
-                    →
-                  </button>
-                </div>
-              </div>
-              <div className="flex flex-col items-center gap-2">
-                <span className="text-white/70 text-xs">Vertical</span>
-                <div className="flex gap-2">
-                  <button
-                    onClick={() => setCurrentDesign({ ...currentDesign, hairstyle_offset_y: currentDesign.hairstyle_offset_y - 1 })}
-                    className="bg-white/20 hover:bg-white/30 text-white rounded px-3 py-1 text-sm"
-                  >
-                    ↑
-                  </button>
-                  <span className="text-white bg-white/10 rounded px-3 py-1 text-sm min-w-[3rem] text-center">
-                    {currentDesign.hairstyle_offset_y}
-                  </span>
-                  <button
-                    onClick={() => setCurrentDesign({ ...currentDesign, hairstyle_offset_y: currentDesign.hairstyle_offset_y + 1 })}
-                    className="bg-white/20 hover:bg-white/30 text-white rounded px-3 py-1 text-sm"
-                  >
-                    ↓
-                  </button>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
 
