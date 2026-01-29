@@ -209,12 +209,12 @@ export default function PuritanGirlDesigner() {
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-xs font-bold text-white uppercase tracking-widest">Face Type</h3>
           </div>
-          <div className="flex gap-3 justify-center">
+          <div className="flex gap-3">
             {FACE_TYPES.map((face) => (
               <button
                 key={face.id}
                 onClick={() => setCurrentDesign({ ...currentDesign, face_type: face.id })}
-                className={`w-[70px] h-[70px] rounded-full flex items-center justify-center transition-all overflow-hidden ${
+                className={`flex-1 aspect-square rounded-full flex items-center justify-center transition-all overflow-hidden ${
                   currentDesign.face_type === face.id
                     ? 'bg-worm scale-110 ring-4 ring-white/20'
                     : 'bg-worm/90 hover:bg-worm'
