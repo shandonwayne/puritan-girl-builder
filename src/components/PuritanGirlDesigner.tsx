@@ -112,6 +112,14 @@ const PRESET_DRESS_COLORS = [
   { name: 'Coral Gradient', color: 'linear-gradient(180deg,rgba(232, 178, 171, 1) 0%, rgba(243, 76, 52, 1) 33%, rgba(251, 138, 16, 1) 100%)' },
 ];
 
+const HAIRSTYLE_BUTTON_CONFIG = {
+  containerWidth: 128,
+  containerHeight: 128,
+  imageHeight: 96,
+  gap: 24,
+  scrollContainerWidth: 280,
+};
+
 export default function PuritanGirlDesigner() {
   const [currentDesign, setCurrentDesign] = useState({
     skin_tone: '#E8B2AB',
@@ -139,7 +147,7 @@ export default function PuritanGirlDesigner() {
       if (ref === dressStyleScrollRef) {
         scrollAmount = 304;
       } else if (ref === hairstyleScrollRef) {
-        scrollAmount = 280;
+        scrollAmount = HAIRSTYLE_BUTTON_CONFIG.containerWidth + HAIRSTYLE_BUTTON_CONFIG.gap;
       }
       ref.current.scrollBy({
         left: direction === 'left' ? -scrollAmount : scrollAmount,
@@ -242,7 +250,11 @@ export default function PuritanGirlDesigner() {
 
               <div
                 ref={hairstyleScrollRef}
-                className="flex gap-6 overflow-x-auto scrollbar-hide w-[280px] mx-auto scroll-smooth snap-x snap-mandatory"
+                className="flex overflow-x-auto scrollbar-hide mx-auto scroll-smooth snap-x snap-mandatory"
+                style={{
+                  gap: `${HAIRSTYLE_BUTTON_CONFIG.gap}px`,
+                  width: `${HAIRSTYLE_BUTTON_CONFIG.scrollContainerWidth}px`
+                }}
               >
                 {HAIRSTYLES.map((style) => (
                   <button
@@ -250,12 +262,21 @@ export default function PuritanGirlDesigner() {
                     onClick={() => setCurrentDesign({ ...currentDesign, hairstyle: style.id })}
                     className="relative group/item flex-shrink-0 snap-start"
                   >
-                    <div className="relative w-32 h-32 flex items-center justify-center transition-transform group-hover/item:scale-105">
+                    <div
+                      className="relative flex items-center justify-center transition-transform group-hover/item:scale-105"
+                      style={{
+                        width: `${HAIRSTYLE_BUTTON_CONFIG.containerWidth}px`,
+                        height: `${HAIRSTYLE_BUTTON_CONFIG.containerHeight}px`
+                      }}
+                    >
                       <img
                         src={currentDesign.hairstyle === style.id ? style.selectedImage : style.image}
                         alt={style.name}
-                        className="h-24 w-auto object-contain"
-                        style={{ transform: `scale(${style.scale})` }}
+                        className="w-auto object-contain"
+                        style={{
+                          height: `${HAIRSTYLE_BUTTON_CONFIG.imageHeight}px`,
+                          transform: `scale(${style.scale})`
+                        }}
                       />
                     </div>
                   </button>
