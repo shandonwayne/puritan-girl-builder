@@ -244,13 +244,13 @@ export default function PuritanGirlDesigner() {
                 ref={hairstyleScrollRef}
                 className="flex gap-6 overflow-x-auto scrollbar-hide w-[280px] mx-auto scroll-smooth snap-x snap-mandatory"
               >
-                {HAIRSTYLES.map((style) => (
+                {HAIRSTYLES.map((style, index) => (
                   <button
                     key={style.id}
                     onClick={() => setCurrentDesign({ ...currentDesign, hairstyle: style.id })}
                     className="relative group/item flex-shrink-0 snap-start"
                   >
-                    <div className="relative w-32 h-32 flex items-center justify-center transition-transform group-hover/item:scale-105">
+                    <div className={`relative h-32 flex items-center justify-center transition-transform group-hover/item:scale-105 ${index === 0 ? 'w-[148px]' : 'w-32'}`}>
                       <img
                         src={currentDesign.hairstyle === style.id ? style.selectedImage : style.image}
                         alt={style.name}
