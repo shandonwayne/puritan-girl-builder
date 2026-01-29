@@ -246,10 +246,10 @@ export default function PuritanGirlDesigner() {
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-xs font-bold text-white uppercase tracking-widest">Hair Style</h3>
           </div>
-          <div className="relative group bg-worm py-5 px-3 rounded-2xl overflow-hidden">
+          <div className="relative group py-5 px-3 rounded-2xl overflow-hidden" style={{ backgroundColor: '#D8C3E6' }}>
             <button
               onClick={() => scroll(hairstyleScrollRef, 'left')}
-              className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
+              className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white text-[#8B5DAF] rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
               aria-label="Scroll left"
             >
               <ChevronLeft className="w-5 h-5" />
@@ -257,28 +257,12 @@ export default function PuritanGirlDesigner() {
             <div
               ref={hairstyleScrollRef}
               className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide w-[296px] mx-auto scroll-smooth snap-x snap-mandatory"
-              onScroll={(e) => {
-                const container = e.currentTarget;
-                const scrollLeft = container.scrollLeft;
-                const itemWidth = 144 + 8;
-                const totalWidth = itemWidth * HAIRSTYLES.length;
-
-                if (scrollLeft <= 0) {
-                  container.scrollLeft = totalWidth;
-                } else if (scrollLeft >= totalWidth * 2) {
-                  container.scrollLeft = totalWidth;
-                }
-              }}
             >
               {[...HAIRSTYLES, ...HAIRSTYLES, ...HAIRSTYLES].map((style, index) => (
                 <button
                   key={`${style.id}-${index}`}
                   onClick={() => setCurrentDesign({ ...currentDesign, hairstyle: style.id })}
-                  className={`flex-shrink-0 w-36 h-36 rounded-2xl overflow-visible transition-all flex items-start justify-center pt-2 px-2 snap-start ${
-                    currentDesign.hairstyle === style.id
-                      ? 'bg-worm scale-105'
-                      : 'bg-worm/90 hover:bg-worm'
-                  }`}
+                  className="flex-shrink-0 w-36 h-36 rounded-2xl overflow-visible transition-all flex items-start justify-center pt-2 px-2 snap-start bg-transparent"
                 >
                   <div className="h-full w-auto relative">
                     <img
@@ -292,11 +276,16 @@ export default function PuritanGirlDesigner() {
             </div>
             <button
               onClick={() => scroll(hairstyleScrollRef, 'right')}
-              className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
+              className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white text-[#8B5DAF] rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
               aria-label="Scroll right"
             >
               <ChevronRight className="w-5 h-5" />
             </button>
+
+            <div
+              className="absolute bottom-2.5 left-0 right-0 h-12 rounded-full mx-8"
+              style={{ backgroundColor: '#8B5DAF' }}
+            ></div>
           </div>
         </div>
 
