@@ -445,7 +445,8 @@ const LayeredCharacter = forwardRef<LayeredCharacterRef, LayeredCharacterProps>(
     const hairSVG = hairDoc.querySelector('svg');
     if (hairSVG) {
       const hairPaths = hairSVG.querySelectorAll('path[fill="#262424"]');
-      hairPaths.forEach(path => path.setAttribute('fill', hairColor));
+      const darkerHairColor = darkenColor(hairColor, 0.20);
+      hairPaths.forEach(path => path.setAttribute('fill', darkerHairColor));
     }
 
     let dressSVG = null;
