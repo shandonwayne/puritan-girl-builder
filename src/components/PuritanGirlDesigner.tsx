@@ -59,14 +59,14 @@ const FACE_TYPES = [
 ];
 
 const HAIRSTYLES = [
-  { id: 'style1', name: 'Style 1', image: hairstyle1SVG, selectedImage: hairstyle1SelectedSVG, scale: 1.0 },
+  { id: 'style1', name: 'Style 1', image: hairstyle1SVG, selectedImage: hairstyle1SelectedSVG, scale: 1.0, containerWidth: 110, containerHeight: 110, imageHeight: 82 },
   { id: 'style2', name: 'Style 2', image: hairstyle2SVG, selectedImage: hairstyle2SelectedSVG, scale: 1.0 },
-  { id: 'style3', name: 'Style 3', image: hairstyle3SVG, selectedImage: hairstyle3SelectedSVG, scale: 1.0 },
+  { id: 'style3', name: 'Style 3', image: hairstyle3SVG, selectedImage: hairstyle3SelectedSVG, scale: 1.0, containerWidth: 140, containerHeight: 140, imageHeight: 110 },
   { id: 'style4', name: 'Style 4', image: hairstyle4SVG, selectedImage: hairstyle4SelectedSVG, scale: 1.0 },
   { id: 'style5', name: 'Style 5', image: hairstyle5SVG, selectedImage: hairstyle5SelectedSVG, scale: 1.0 },
   { id: 'style6', name: 'Style 6', image: hairstyle6SVG, selectedImage: hairstyle6SelectedSVG, scale: 1.0 },
   { id: 'style7', name: 'Style 7', image: hairstyle7SVG, selectedImage: hairstyle7SelectedSVG, scale: 0.78 },
-  { id: 'style8', name: 'Style 8', image: hairstyle8SVG, selectedImage: hairstyle8SelectedSVG, scale: 1.0 },
+  { id: 'style8', name: 'Style 8', image: hairstyle8SVG, selectedImage: hairstyle8SelectedSVG, scale: 1.0, containerWidth: 150, containerHeight: 150, imageHeight: 120 },
 ];
 
 const DRESS_STYLES = [
@@ -256,31 +256,37 @@ export default function PuritanGirlDesigner() {
                   width: `${HAIRSTYLE_BUTTON_CONFIG.scrollContainerWidth}px`
                 }}
               >
-                {HAIRSTYLES.map((style) => (
-                  <button
-                    key={style.id}
-                    onClick={() => setCurrentDesign({ ...currentDesign, hairstyle: style.id })}
-                    className="relative group/item flex-shrink-0 snap-start"
-                  >
-                    <div
-                      className="relative flex items-center justify-center transition-transform group-hover/item:scale-105"
-                      style={{
-                        width: `${HAIRSTYLE_BUTTON_CONFIG.containerWidth}px`,
-                        height: `${HAIRSTYLE_BUTTON_CONFIG.containerHeight}px`
-                      }}
+                {HAIRSTYLES.map((style) => {
+                  const containerWidth = (style as any).containerWidth ?? HAIRSTYLE_BUTTON_CONFIG.containerWidth;
+                  const containerHeight = (style as any).containerHeight ?? HAIRSTYLE_BUTTON_CONFIG.containerHeight;
+                  const imageHeight = (style as any).imageHeight ?? HAIRSTYLE_BUTTON_CONFIG.imageHeight;
+
+                  return (
+                    <button
+                      key={style.id}
+                      onClick={() => setCurrentDesign({ ...currentDesign, hairstyle: style.id })}
+                      className="relative group/item flex-shrink-0 snap-start"
                     >
-                      <img
-                        src={currentDesign.hairstyle === style.id ? style.selectedImage : style.image}
-                        alt={style.name}
-                        className="w-auto object-contain"
+                      <div
+                        className="relative flex items-center justify-center transition-transform group-hover/item:scale-105"
                         style={{
-                          height: `${HAIRSTYLE_BUTTON_CONFIG.imageHeight}px`,
-                          transform: `scale(${style.scale})`
+                          width: `${containerWidth}px`,
+                          height: `${containerHeight}px`
                         }}
-                      />
-                    </div>
-                  </button>
-                ))}
+                      >
+                        <img
+                          src={currentDesign.hairstyle === style.id ? style.selectedImage : style.image}
+                          alt={style.name}
+                          className="w-auto object-contain"
+                          style={{
+                            height: `${imageHeight}px`,
+                            transform: `scale(${style.scale})`
+                          }}
+                        />
+                      </div>
+                    </button>
+                  );
+                })}
               </div>
 
               <button
