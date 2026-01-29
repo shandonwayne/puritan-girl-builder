@@ -272,7 +272,7 @@ export default function PuritanGirlDesigner() {
             </div>
 
             <div
-              className="absolute bottom-0 left-0 right-0 h-12 rounded-full mx-8"
+              className="absolute bottom-2.5 left-0 right-0 h-12 rounded-full mx-8"
               style={{ backgroundColor: '#8B5DAF' }}
             ></div>
           </div>
