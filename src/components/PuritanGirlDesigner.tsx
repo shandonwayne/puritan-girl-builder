@@ -236,7 +236,7 @@ export default function PuritanGirlDesigner() {
                     : 'bg-worm/90 hover:bg-worm'
                 }`}
               >
-                <img src={face.image} alt={face.id} className="w-[45%] h-[70%] object-contain" />
+                <img src={face.image} alt={face.id} className="w-[45%] h-[70%] object-contain transition-transform hover:scale-110" />
               </button>
             ))}
           </div>
@@ -268,7 +268,7 @@ export default function PuritanGirlDesigner() {
                     <img
                       src={currentDesign.hairstyle === style.id ? style.selectedImage : style.image}
                       alt={style.name}
-                      className="h-full w-auto object-contain object-top"
+                      className="h-full w-auto object-contain object-top transition-transform hover:scale-110"
                     />
                     <img
                       src={face1SVG}
@@ -356,7 +356,7 @@ export default function PuritanGirlDesigner() {
                     : 'bg-worm/90 hover:bg-worm'
                 }`}
               >
-                <img src={bangs.image} alt={bangs.name} className="w-full h-full object-cover" />
+                <img src={bangs.image} alt={bangs.name} className="w-full h-full object-cover transition-transform hover:scale-110" />
               </button>
             ))}
           </div>
@@ -389,7 +389,7 @@ export default function PuritanGirlDesigner() {
                     <img
                       src={dress.image}
                       alt={dress.name}
-                      className="h-full w-auto object-contain object-top hover:animate-wobble"
+                      className="h-full w-auto object-contain object-top hover:animate-wobble transition-transform hover:scale-110"
                       style={{
                         transformOrigin: 'top center',
                         filter: currentDesign.dress_style === dress.id
@@ -480,7 +480,7 @@ export default function PuritanGirlDesigner() {
                 }`}
               >
                 {boots.image ? (
-                  <img src={boots.image} alt={boots.name} className="w-full h-full object-cover" />
+                  <img src={boots.image} alt={boots.name} className="w-full h-full object-cover transition-transform hover:scale-110" />
                 ) : (
                   boots.name
                 )}
