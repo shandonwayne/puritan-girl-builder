@@ -445,8 +445,7 @@ const LayeredCharacter = forwardRef<LayeredCharacterRef, LayeredCharacterProps>(
     const hairSVG = hairDoc.querySelector('svg');
     if (hairSVG) {
       const hairPaths = hairSVG.querySelectorAll('path[fill="#262424"]');
-      const darkerHairColor = darkenColor(hairColor, 0.2);
-      hairPaths.forEach(path => path.setAttribute('fill', darkerHairColor));
+      hairPaths.forEach(path => path.setAttribute('fill', hairColor));
     }
 
     let dressSVG = null;
@@ -582,8 +581,7 @@ const LayeredCharacter = forwardRef<LayeredCharacterRef, LayeredCharacterProps>(
       faceSVG = faceDoc.querySelector('svg');
       if (faceSVG) {
         const eyebrowPaths = faceSVG.querySelectorAll('.eyebrows path[stroke="#E8B2AB"]');
-        const darkerHairColor = darkenColor(hairColor, 0.2);
-        eyebrowPaths.forEach(path => path.setAttribute('stroke', darkerHairColor));
+        eyebrowPaths.forEach(path => path.setAttribute('stroke', hairColor));
 
         const fantasyColor = getFantasyFaceColor(skinTone);
         const tanSkinTone = '#75513D';
@@ -668,8 +666,7 @@ const LayeredCharacter = forwardRef<LayeredCharacterRef, LayeredCharacterProps>(
       bangsSVG = bangsDoc.querySelector('svg');
       if (bangsSVG) {
         const bangsPaths = bangsSVG.querySelectorAll('path[fill="#CBA2ED"], path[fill="#BD9ADA"], path[fill="#29460A"]');
-        const darkerHairColor = darkenColor(hairColor, 0.2);
-        const lighterHairColor = lightenColor(darkerHairColor);
+        const lighterHairColor = lightenColor(hairColor);
         bangsPaths.forEach(path => path.setAttribute('fill', lighterHairColor));
 
         const bangsGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
