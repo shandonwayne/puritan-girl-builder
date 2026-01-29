@@ -417,22 +417,29 @@ export default function PuritanGirlDesigner() {
           </div>
           <div className="relative">
             <div ref={dressColorScrollRef} className="flex gap-3 mb-3 overflow-x-auto py-2 scrollbar-hide">
-              {PRESET_DRESS_COLORS.map((preset) => (
-                <button
-                  key={preset.name}
-                  onClick={() => setCurrentDesign({ ...currentDesign, dress_color: preset.color })}
-                  className={`w-12 h-12 rounded-full border-4 transition-all flex-shrink-0 ${
-                    currentDesign.dress_color === preset.color
-                      ? 'border-white scale-110'
-                      : 'border-dark-white/30 hover:border-dark-white/50'
-                  }`}
-                  style={preset.color.startsWith('linear-gradient')
-                    ? { backgroundImage: preset.color }
-                    : { backgroundColor: preset.color }
-                  }
-                  title={preset.name}
-                />
-              ))}
+              {PRESET_DRESS_COLORS.map((preset) => {
+                const isGradient = preset.color.startsWith('linear-gradient');
+                return (
+                  <button
+                    key={preset.name}
+                    onClick={() => setCurrentDesign({ ...currentDesign, dress_color: preset.color })}
+                    className={`w-12 h-12 rounded-full transition-all flex-shrink-0 ${
+                      isGradient
+                        ? (currentDesign.dress_color === preset.color ? 'scale-110' : '')
+                        : `border-4 ${
+                            currentDesign.dress_color === preset.color
+                              ? 'border-white scale-110'
+                              : 'border-dark-white/30 hover:border-dark-white/50'
+                          }`
+                    }`}
+                    style={isGradient
+                      ? { backgroundImage: preset.color }
+                      : { backgroundColor: preset.color }
+                    }
+                    title={preset.name}
+                  />
+                );
+              })}
               <button
                 onClick={() => setShowCustomDressColor(!showCustomDressColor)}
                 className="w-12 h-12 rounded-full border-4 border-dark-white/30 hover:border-dark-white/50 bg-lite-black flex items-center justify-center text-white text-2xl font-light transition-all flex-shrink-0"
