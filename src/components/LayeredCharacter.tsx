@@ -444,7 +444,7 @@ const LayeredCharacter = forwardRef<LayeredCharacterRef, LayeredCharacterProps>(
     const hairDoc = parser.parseFromString(hairstyleSVGRef.current, 'image/svg+xml');
     const hairSVG = hairDoc.querySelector('svg');
     if (hairSVG) {
-      const hairPaths = hairSVG.querySelectorAll('path[fill="#262424"]');
+      const hairPaths = hairSVG.querySelectorAll('path[fill="#262424"], path[fill="#AC7ED3"]');
       const darkerHairColor = darkenColor(hairColor, 0.20);
       hairPaths.forEach(path => path.setAttribute('fill', darkerHairColor));
     }
