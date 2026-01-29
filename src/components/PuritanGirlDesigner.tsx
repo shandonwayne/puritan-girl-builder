@@ -180,7 +180,7 @@ export default function PuritanGirlDesigner() {
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
-            <div ref={skinToneScrollRef} className="flex gap-[17px] overflow-x-auto py-4 scrollbar-hide">
+            <div ref={skinToneScrollRef} className="flex gap-3 overflow-x-auto py-4 scrollbar-hide">
               {SKIN_TONES.map((tone) => (
                 <button
                   key={tone.id}
@@ -283,7 +283,7 @@ export default function PuritanGirlDesigner() {
             <h3 className="text-xs font-bold text-white uppercase tracking-widest">Hair Color</h3>
           </div>
           <div className="relative">
-            <div ref={hairColorScrollRef} className="flex gap-[17px] mb-3 overflow-x-auto py-2 scrollbar-hide">
+            <div ref={hairColorScrollRef} className="flex gap-3 mb-3 overflow-x-auto py-2 scrollbar-hide">
               {PRESET_HAIR_COLORS.map((preset) => (
                 <button
                   key={preset.name}
@@ -400,7 +400,7 @@ export default function PuritanGirlDesigner() {
             <h3 className="text-xs font-bold text-white uppercase tracking-widest">Dress Color</h3>
           </div>
           <div className="relative">
-            <div ref={dressColorScrollRef} className="flex gap-[17px] mb-3 overflow-x-auto py-2 scrollbar-hide">
+            <div ref={dressColorScrollRef} className="flex gap-3 mb-3 overflow-x-auto py-2 scrollbar-hide">
               {PRESET_DRESS_COLORS.map((preset) => (
                 <button
                   key={preset.name}
