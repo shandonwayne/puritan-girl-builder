@@ -139,7 +139,7 @@ export default function PuritanGirlDesigner() {
       if (ref === dressStyleScrollRef) {
         scrollAmount = 304;
       } else if (ref === hairstyleScrollRef) {
-        scrollAmount = 320;
+        scrollAmount = 280;
       }
       ref.current.scrollBy({
         left: direction === 'left' ? -scrollAmount : scrollAmount,
@@ -242,7 +242,7 @@ export default function PuritanGirlDesigner() {
 
               <div
                 ref={hairstyleScrollRef}
-                className="flex gap-6 overflow-x-auto scrollbar-hide w-[320px] mx-auto scroll-smooth snap-x snap-mandatory"
+                className="flex gap-6 overflow-x-auto scrollbar-hide w-[280px] mx-auto scroll-smooth snap-x snap-mandatory"
               >
                 {HAIRSTYLES.map((style) => (
                   <button
@@ -250,11 +250,11 @@ export default function PuritanGirlDesigner() {
                     onClick={() => setCurrentDesign({ ...currentDesign, hairstyle: style.id })}
                     className="relative group/item flex-shrink-0 snap-start"
                   >
-                    <div className="relative w-40 h-40 flex items-center justify-center transition-transform group-hover/item:scale-105 mt-5">
+                    <div className="relative w-32 h-32 flex items-center justify-center transition-transform group-hover/item:scale-105">
                       <img
                         src={currentDesign.hairstyle === style.id ? style.selectedImage : style.image}
                         alt={style.name}
-                        className="h-32 w-auto object-contain"
+                        className="h-24 w-auto object-contain"
                         style={{ transform: `scale(${style.scale})` }}
                       />
                     </div>
