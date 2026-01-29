@@ -246,10 +246,10 @@ export default function PuritanGirlDesigner() {
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-xs font-bold text-white uppercase tracking-widest">Hair Style</h3>
           </div>
-          <div className="relative group py-5 px-3 rounded-2xl overflow-hidden" style={{ backgroundColor: '#D8C3E6' }}>
+          <div className="relative py-5 px-3 rounded-2xl overflow-hidden" style={{ backgroundColor: '#D8C3E6' }}>
             <button
               onClick={() => scroll(hairstyleScrollRef, 'left')}
-              className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white text-[#8B5DAF] rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
+              className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white text-[#8B5DAF] rounded-full p-1 hover:opacity-100 transition-opacity"
               aria-label="Scroll left"
             >
               <ChevronLeft className="w-5 h-5" />
@@ -281,7 +281,7 @@ export default function PuritanGirlDesigner() {
             </div>
             <button
               onClick={() => scroll(hairstyleScrollRef, 'right')}
-              className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white text-[#8B5DAF] rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
+              className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white text-[#8B5DAF] rounded-full p-1 hover:opacity-100 transition-opacity"
               aria-label="Scroll right"
             >
               <ChevronRight className="w-5 h-5" />
