@@ -40,6 +40,8 @@ interface LayeredCharacterProps {
   bangsStyle?: string;
   bootsStyle?: string;
   bootsColor?: string;
+  hairstyleOffsetX?: number;
+  hairstyleOffsetY?: number;
 }
 
 const HAIRSTYLE_MAP: Record<string, string> = {
@@ -302,6 +304,8 @@ const LayeredCharacter = forwardRef<LayeredCharacterRef, LayeredCharacterProps>(
   bangsStyle = '',
   bootsStyle = '',
   bootsColor = '#1A1A1A',
+  hairstyleOffsetX = 0,
+  hairstyleOffsetY = 0,
 }, ref) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const baseSVGRef = useRef<string>('');
@@ -421,7 +425,7 @@ const LayeredCharacter = forwardRef<LayeredCharacterRef, LayeredCharacterProps>(
     if (baseSVGRef.current && hairstyleSVGRef.current) {
       renderComposite();
     }
-  }, [skinTone, hairColor, dressColor, bootsColor]);
+  }, [skinTone, hairColor, dressColor, bootsColor, hairstyleOffsetX, hairstyleOffsetY]);
 
   const renderComposite = () => {
     if (!containerRef.current || !baseSVGRef.current) return;
@@ -541,21 +545,26 @@ const LayeredCharacter = forwardRef<LayeredCharacterRef, LayeredCharacterProps>(
       const position = HAIRSTYLE_POSITIONS[hairstyle] || 'translate(31.5, -20)';
       const scale = HAIRSTYLE_SCALES[hairstyle] || 1.0;
 
-      if (scale !== 1.0) {
-        const translateMatch = position.match(/translate\(([^,]+),\s*([^)]+)\)/);
-        if (translateMatch) {
-          const x = parseFloat(translateMatch[1]);
-          const y = parseFloat(translateMatch[2]);
+      const translateMatch = position.match(/translate\(([^,]+),\s*([^)]+)\)/);
+      if (translateMatch) {
+        let x = parseFloat(translateMatch[1]) + hairstyleOffsetX;
+        let y = parseFloat(translateMatch[2]) + hairstyleOffsetY;
+
+        if (scale !== 1.0) {
           const centerX = 130;
           const centerY = 80;
           const scaledX = x + (centerX - x) * (1 - scale);
           const scaledY = y + (centerY - y) * (1 - scale);
           hairGroup.setAttribute('transform', `translate(${scaledX}, ${scaledY}) scale(${scale})`);
         } else {
-          hairGroup.setAttribute('transform', `${position} scale(${scale})`);
+          hairGroup.setAttribute('transform', `translate(${x}, ${y})`);
         }
       } else {
-        hairGroup.setAttribute('transform', position);
+        if (scale !== 1.0) {
+          hairGroup.setAttribute('transform', `${position} scale(${scale})`);
+        } else {
+          hairGroup.setAttribute('transform', position);
+        }
       }
 
       const hairContent = hairSVG.querySelector('g');
