@@ -231,7 +231,7 @@ export default function PuritanGirlDesigner() {
             <h3 className="text-xs font-bold text-white uppercase tracking-widest">Hair Style</h3>
           </div>
           <div className="relative rounded-2xl overflow-hidden group" style={{ backgroundColor: '#D8C3E6' }}>
-            <div className="relative pt-8 pb-20 px-3">
+            <div className="relative pt-8 pb-8 px-3">
               <button
                 onClick={() => scroll(hairstyleScrollRef, 'left')}
                 className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white text-[#8B5DAF] rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity"
