@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Download } from 'lucide-react';
 import LayeredCharacter, { LayeredCharacterRef } from './LayeredCharacter';
 import face1SVG from '../assets/faces/face_1.svg';
@@ -147,7 +147,7 @@ export default function PuritanGirlDesigner() {
       if (ref === dressStyleScrollRef) {
         scrollAmount = 304;
       } else if (ref === hairstyleScrollRef) {
-        scrollAmount = HAIRSTYLE_BUTTON_CONFIG.containerWidth + HAIRSTYLE_BUTTON_CONFIG.gap;
+        scrollAmount = 152;
       }
       ref.current.scrollBy({
         left: direction === 'left' ? -scrollAmount : scrollAmount,
@@ -155,6 +155,14 @@ export default function PuritanGirlDesigner() {
       });
     }
   };
+
+  useEffect(() => {
+    if (hairstyleScrollRef.current) {
+      const itemWidth = 152;
+      const totalWidth = itemWidth * HAIRSTYLES.length;
+      hairstyleScrollRef.current.scrollLeft = totalWidth;
+    }
+  }, []);
 
   return (
     <div className="flex gap-0 h-[650px] max-h-[650px]">
@@ -238,70 +246,57 @@ export default function PuritanGirlDesigner() {
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-xs font-bold text-white uppercase tracking-widest">Hair Style</h3>
           </div>
-          <div className="relative rounded-2xl overflow-hidden group" style={{ backgroundColor: '#D8C3E6' }}>
-            <div className="relative pt-8 pb-8 px-3">
-              <button
-                onClick={() => scroll(hairstyleScrollRef, 'left')}
-                className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white text-[#8B5DAF] rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity"
-                aria-label="Scroll left"
-              >
-                <ChevronLeft className="w-6 h-6" />
-              </button>
-
-              <div
-                ref={hairstyleScrollRef}
-                className="flex overflow-x-auto scrollbar-hide mx-auto scroll-smooth snap-x snap-mandatory"
-                style={{
-                  gap: `${HAIRSTYLE_BUTTON_CONFIG.gap}px`,
-                  width: `${HAIRSTYLE_BUTTON_CONFIG.scrollContainerWidth}px`
-                }}
-              >
-                {HAIRSTYLES.map((style) => {
-                  const containerWidth = (style as any).containerWidth ?? HAIRSTYLE_BUTTON_CONFIG.containerWidth;
-                  const containerHeight = (style as any).containerHeight ?? HAIRSTYLE_BUTTON_CONFIG.containerHeight;
-                  const imageHeight = (style as any).imageHeight ?? HAIRSTYLE_BUTTON_CONFIG.imageHeight;
-
-                  return (
-                    <button
-                      key={style.id}
-                      onClick={() => setCurrentDesign({ ...currentDesign, hairstyle: style.id })}
-                      className="relative group/item flex-shrink-0 snap-start"
-                    >
-                      <div
-                        className="relative flex items-center justify-center transition-transform group-hover/item:scale-105"
-                        style={{
-                          width: `${containerWidth}px`,
-                          height: `${containerHeight}px`
-                        }}
-                      >
-                        <img
-                          src={currentDesign.hairstyle === style.id ? style.selectedImage : style.image}
-                          alt={style.name}
-                          className="w-auto object-contain"
-                          style={{
-                            height: `${imageHeight}px`,
-                            transform: `scale(${style.scale})`
-                          }}
-                        />
-                      </div>
-                    </button>
-                  );
-                })}
-              </div>
-
-              <button
-                onClick={() => scroll(hairstyleScrollRef, 'right')}
-                className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white text-[#8B5DAF] rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity"
-                aria-label="Scroll right"
-              >
-                <ChevronRight className="w-6 h-6" />
-              </button>
-            </div>
-
+          <div className="relative group bg-worm py-5 px-3 rounded-2xl overflow-hidden">
+            <button
+              onClick={() => scroll(hairstyleScrollRef, 'left')}
+              className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
+              aria-label="Scroll left"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
             <div
-              className="absolute bottom-2.5 left-0 right-0 h-12 rounded-full mx-8"
-              style={{ backgroundColor: '#8B5DAF' }}
-            ></div>
+              ref={hairstyleScrollRef}
+              className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide w-[296px] mx-auto scroll-smooth snap-x snap-mandatory"
+              onScroll={(e) => {
+                const container = e.currentTarget;
+                const scrollLeft = container.scrollLeft;
+                const itemWidth = 144 + 8;
+                const totalWidth = itemWidth * HAIRSTYLES.length;
+
+                if (scrollLeft <= 0) {
+                  container.scrollLeft = totalWidth;
+                } else if (scrollLeft >= totalWidth * 2) {
+                  container.scrollLeft = totalWidth;
+                }
+              }}
+            >
+              {[...HAIRSTYLES, ...HAIRSTYLES, ...HAIRSTYLES].map((style, index) => (
+                <button
+                  key={`${style.id}-${index}`}
+                  onClick={() => setCurrentDesign({ ...currentDesign, hairstyle: style.id })}
+                  className={`flex-shrink-0 w-36 h-36 rounded-2xl overflow-visible transition-all flex items-start justify-center pt-2 px-2 snap-start ${
+                    currentDesign.hairstyle === style.id
+                      ? 'bg-worm scale-105'
+                      : 'bg-worm/90 hover:bg-worm'
+                  }`}
+                >
+                  <div className="h-full w-auto relative">
+                    <img
+                      src={currentDesign.hairstyle === style.id ? style.selectedImage : style.image}
+                      alt={style.name}
+                      className="h-full w-auto object-contain object-top"
+                    />
+                  </div>
+                </button>
+              ))}
+            </div>
+            <button
+              onClick={() => scroll(hairstyleScrollRef, 'right')}
+              className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
+              aria-label="Scroll right"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
           </div>
         </div>
 
