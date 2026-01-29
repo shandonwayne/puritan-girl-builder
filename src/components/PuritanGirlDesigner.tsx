@@ -473,7 +473,7 @@ export default function PuritanGirlDesigner() {
               <button
                 key={boots.id}
                 onClick={() => setCurrentDesign({ ...currentDesign, boots_style: boots.id })}
-                className={`h-[95px] rounded-2xl flex items-center justify-center text-xs font-medium transition-all overflow-hidden p-2.5 ${
+                className={`h-[95px] rounded-2xl flex items-center justify-center text-xs font-medium transition-all overflow-hidden ${
                   currentDesign.boots_style === boots.id
                     ? 'bg-lime text-black scale-105 ring-4 ring-white/20'
                     : 'bg-lite-black text-dark-white hover:bg-lite-black/80'
