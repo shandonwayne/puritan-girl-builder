@@ -262,13 +262,18 @@ export default function PuritanGirlDesigner() {
                 <button
                   key={`${style.id}-${index}`}
                   onClick={() => setCurrentDesign({ ...currentDesign, hairstyle: style.id })}
-                  className="flex-shrink-0 w-36 h-36 rounded-2xl overflow-visible transition-all flex items-start justify-center pt-2 px-2 snap-start bg-transparent"
+                  className="group flex-shrink-0 w-36 h-36 rounded-2xl overflow-visible transition-all flex items-start justify-center pt-2 px-2 snap-start bg-transparent"
                 >
-                  <div className="h-full w-auto relative">
+                  <div className="h-full w-auto relative group-hover:animate-wiggle">
                     <img
                       src={currentDesign.hairstyle === style.id ? style.selectedImage : style.image}
                       alt={style.name}
                       className="h-full w-auto object-contain object-top"
+                    />
+                    <img
+                      src={face1SVG}
+                      alt="face"
+                      className="absolute top-[42%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[18%] h-auto pointer-events-none"
                     />
                   </div>
                 </button>
