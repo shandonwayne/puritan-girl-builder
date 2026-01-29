@@ -209,7 +209,7 @@ export default function PuritanGirlDesigner() {
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-xs font-bold text-white uppercase tracking-widest">Face Type</h3>
           </div>
-          <div className="flex gap-3">
+          <div className="flex gap-5">
             {FACE_TYPES.map((face) => (
               <button
                 key={face.id}
