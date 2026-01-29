@@ -389,7 +389,7 @@ export default function PuritanGirlDesigner() {
                     <img
                       src={dress.image}
                       alt={dress.name}
-                      className="h-full w-auto object-contain object-top hover:animate-wobble transition-transform hover:scale-110"
+                      className="h-full w-auto object-contain object-top hover:animate-wobble"
                       style={{
                         transformOrigin: 'top center',
                         filter: currentDesign.dress_style === dress.id

@@ -535,6 +535,16 @@ const LayeredCharacter = forwardRef<LayeredCharacterRef, LayeredCharacterProps>(
       defsElement.appendChild(bootsGradientElement);
     }
 
+    if (bootsSVG) {
+      const bootsDefs = bootsSVG.querySelector('defs');
+      if (bootsDefs) {
+        const children = Array.from(bootsDefs.children);
+        children.forEach(child => {
+          defsElement.appendChild(child.cloneNode(true));
+        });
+      }
+    }
+
     wrapper.appendChild(defsElement);
 
     if (hairSVG) {
