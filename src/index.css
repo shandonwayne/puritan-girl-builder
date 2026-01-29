@@ -115,8 +115,8 @@
   }
 
   .animate-wiggle {
-    animation: wiggle 1.8s ease-in-out infinite;
-    transform-origin: center center;
+    animation: wiggle 0.8s ease-in-out infinite;
+    transform-origin: bottom center;
   }
 
   @keyframes wiggle {
