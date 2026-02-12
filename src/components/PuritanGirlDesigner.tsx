@@ -32,7 +32,7 @@ import bangsCenterSVG from '../assets/bangs/bangs-center.svg';
 import bangsStraightSVG from '../assets/bangs/bangs-straight.svg';
 import bangsWispySVG from '../assets/bangs/bangs-wispy.svg';
 import bootsClassicPNG from '../assets/boots-classic.png';
-import bootsLacedPNG from '../assets/boots-laced.png';
+import bootsLacedSVG from '../assets/boots_6 copy.svg';
 import bootsBuckledPNG from '../assets/boots-buckled.png';
 import bootsTallPNG from '../assets/boots-tall.png';
 import bootsAnklePNG from '../assets/boots-ankle.png';
@@ -91,7 +91,7 @@ const BOOTS_STYLES = [
   { id: 'boots3', name: 'Ankle', image: bootsAnklePNG },
   { id: 'boots4', name: 'Tall', image: bootsTallPNG },
   { id: 'boots5', name: 'Simple', image: bootsSimplePNG },
-  { id: 'boots6', name: 'Laced', image: bootsLacedPNG },
+  { id: 'boots6', name: 'Laced', image: bootsLacedSVG },
 ];
 
 const PRESET_HAIR_COLORS = [
