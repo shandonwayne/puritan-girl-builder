@@ -595,7 +595,8 @@ const LayeredCharacter = forwardRef<LayeredCharacterRef, LayeredCharacterProps>(
         eyebrowPaths.forEach(path => path.setAttribute('stroke', hairColor));
 
         const fantasyColor = getFantasyFaceColor(skinTone);
-        const tanSkinTone = '#75513D';
+        const tanSkinTone = '#A87A5E';
+        const deepSkinTone = '#8B6347';
 
         if (fantasyColor) {
           const eyeEllipses = faceSVG.querySelectorAll('.eyes ellipse[fill="#1A1A1A"]');
@@ -605,13 +606,13 @@ const LayeredCharacter = forwardRef<LayeredCharacterRef, LayeredCharacterProps>(
           if (mouthPath) {
             mouthPath.setAttribute('stroke', fantasyColor);
           }
-        } else if (skinTone.toLowerCase() === tanSkinTone.toLowerCase()) {
+        } else if (skinTone.toLowerCase() === tanSkinTone.toLowerCase() || skinTone.toLowerCase() === deepSkinTone.toLowerCase()) {
           const eyeEllipses = faceSVG.querySelectorAll('.eyes ellipse[fill="#1A1A1A"]');
-          eyeEllipses.forEach(ellipse => ellipse.setAttribute('fill', '#2C1810'));
+          eyeEllipses.forEach(ellipse => ellipse.setAttribute('fill', '#1A1A1A'));
 
           const mouthPath = faceSVG.querySelector('.mouth[stroke="#1A1A1A"]');
           if (mouthPath) {
-            mouthPath.setAttribute('stroke', '#2C1810');
+            mouthPath.setAttribute('stroke', '#1A1A1A');
           }
         } else {
           const shouldLighten = shouldLightenFaceFeatures(skinTone);
