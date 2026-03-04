@@ -391,7 +391,7 @@ export default function PuritanGirlDesigner() {
                       style={{
                         transformOrigin: 'top center',
                         filter: currentDesign.dress_style === dress.id
-                          ? 'brightness(0) saturate(100%) invert(61%) sepia(23%) saturate(827%) hue-rotate(215deg) brightness(91%) contrast(89%)'
+                          ? 'brightness(0) saturate(100%) invert(55%) sepia(14%) saturate(460%) hue-rotate(215deg) brightness(88%) contrast(90%)'
                           : 'none'
                       }}
                     />
