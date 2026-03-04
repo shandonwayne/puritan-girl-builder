@@ -166,7 +166,7 @@ const getFantasyFaceColor = (skinTone: string): string | null => {
   }
 
   if (skinTone.toLowerCase() === paleLavender.toLowerCase()) {
-    return '#8B6FAE';
+    return '#6B4D85';
   }
 
   return null;
