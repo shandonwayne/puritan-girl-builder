@@ -380,7 +380,7 @@ export default function PuritanGirlDesigner() {
                   className={`flex-shrink-0 w-36 h-36 rounded-2xl overflow-visible transition-all flex items-start justify-center pt-2 px-2 snap-start ${
                     currentDesign.dress_style === dress.id
                       ? 'bg-worm scale-105'
-                      : 'bg-worm/90 hover:bg-worm'
+                      : 'bg-worm/45 hover:bg-worm/60'
                   }`}
                 >
                   <div className="h-full w-auto relative">
