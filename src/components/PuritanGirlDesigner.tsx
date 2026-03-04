@@ -43,10 +43,6 @@ const SKIN_TONES = [
   { id: 'light', name: 'Light', color: '#E8B2AB' },
   { id: 'medium', name: 'Medium', color: '#ECAB94' },
   { id: 'warm', name: 'Warm', color: '#D4A574' },
-  { id: 'tan', name: 'Tan', color: '#75513D' },
-  { id: 'deeptan', name: 'Deep Tan', color: '#5C3A21' },
-  { id: 'brown', name: 'Brown', color: '#3E2D25' },
-  { id: 'deepbrown', name: 'Deep Brown', color: '#2B1810' },
   { id: 'palegreen', name: 'Pale Green', color: '#8BC98B' },
   { id: 'palelavender', name: 'Pale Lavender', color: '#E6D9F5' },
 ];
