@@ -43,6 +43,7 @@ const SKIN_TONES = [
   { id: 'light', name: 'Light', color: '#E8B2AB' },
   { id: 'medium', name: 'Medium', color: '#ECAB94' },
   { id: 'warm', name: 'Warm', color: '#D4A574' },
+  { id: 'tan', name: 'Tan', color: '#B8886E' },
   { id: 'palegreen', name: 'Pale Green', color: '#8BC98B' },
   { id: 'palelavender', name: 'Pale Lavender', color: '#E6D9F5' },
 ];
