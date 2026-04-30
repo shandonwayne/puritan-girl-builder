@@ -231,7 +231,7 @@ export default function PuritanGirlDesigner() {
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-xs font-bold text-white uppercase tracking-widest">Hair Style</h3>
           </div>
-          <div className="relative py-5 px-3 rounded-2xl overflow-visible" style={{ backgroundColor: '#D8C3E6' }}>
+          <div className="relative py-5 px-3 rounded-2xl overflow-hidden" style={{ backgroundColor: '#D8C3E6' }}>
             <button
               onClick={() => {
                 const prev = (hairstyleIndex - 1 + HAIRSTYLES.length) % HAIRSTYLES.length;
