@@ -63,7 +63,7 @@ const HAIRSTYLES = [
   { id: 'style4', name: 'Style 4', image: hairstyle4SVG, selectedImage: hairstyle4SelectedSVG, scale: 1.0 },
   { id: 'style5', name: 'Style 5', image: hairstyle5SVG, selectedImage: hairstyle5SelectedSVG, scale: 1.0 },
   { id: 'style6', name: 'Style 6', image: hairstyle6SVG, selectedImage: hairstyle6SelectedSVG, scale: 1.0 },
-  { id: 'style7', name: 'Style 7', image: hairstyle7SVG, selectedImage: hairstyle7SelectedSVG, scale: 1.0 },
+  { id: 'style7', name: 'Style 7', image: hairstyle7SVG, selectedImage: hairstyle7SelectedSVG, scale: 2.0 },
   { id: 'style8', name: 'Style 8', image: hairstyle8SVG, selectedImage: hairstyle8SelectedSVG, scale: 1.0, containerWidth: 150, containerHeight: 150, imageHeight: 120 },
 ];
 
