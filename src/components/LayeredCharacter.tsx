@@ -71,7 +71,7 @@ const HAIRSTYLE_SCALES: Record<string, number> = {
   style4: 1.0,
   style5: 1.0,
   style6: 1.0,
-  style7: 0.78,
+  style7: 1.0,
   style8: 1.0,
 };
 
