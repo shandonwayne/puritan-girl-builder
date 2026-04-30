@@ -131,36 +131,23 @@ export default function PuritanGirlDesigner() {
   });
   const [showCustomHairColor, setShowCustomHairColor] = useState(false);
   const [showCustomDressColor, setShowCustomDressColor] = useState(false);
+  const [hairstyleIndex, setHairstyleIndex] = useState(0);
 
   const characterRef = useRef<LayeredCharacterRef>(null);
   const skinToneScrollRef = useRef<HTMLDivElement>(null);
   const hairColorScrollRef = useRef<HTMLDivElement>(null);
-  const hairstyleScrollRef = useRef<HTMLDivElement>(null);
   const dressStyleScrollRef = useRef<HTMLDivElement>(null);
   const dressColorScrollRef = useRef<HTMLDivElement>(null);
 
   const scroll = (ref: React.RefObject<HTMLDivElement>, direction: 'left' | 'right') => {
     if (ref.current) {
-      let scrollAmount = 200;
-      if (ref === dressStyleScrollRef) {
-        scrollAmount = 304;
-      } else if (ref === hairstyleScrollRef) {
-        scrollAmount = 152;
-      }
+      const scrollAmount = ref === dressStyleScrollRef ? 304 : 200;
       ref.current.scrollBy({
         left: direction === 'left' ? -scrollAmount : scrollAmount,
         behavior: 'smooth'
       });
     }
   };
-
-  useEffect(() => {
-    if (hairstyleScrollRef.current) {
-      const itemWidth = 152;
-      const totalWidth = itemWidth * HAIRSTYLES.length;
-      hairstyleScrollRef.current.scrollLeft = totalWidth;
-    }
-  }, []);
 
   return (
     <div className="flex gap-0 h-[650px] max-h-[650px]">
@@ -246,51 +233,64 @@ export default function PuritanGirlDesigner() {
           </div>
           <div className="relative py-5 px-3 rounded-2xl overflow-visible" style={{ backgroundColor: '#D8C3E6' }}>
             <button
-              onClick={() => scroll(hairstyleScrollRef, 'left')}
-              className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white text-[#8B5DAF] rounded-full p-1 hover:opacity-100 transition-opacity"
-              aria-label="Scroll left"
+              onClick={() => {
+                const prev = (hairstyleIndex - 1 + HAIRSTYLES.length) % HAIRSTYLES.length;
+                setHairstyleIndex(prev);
+                setCurrentDesign({ ...currentDesign, hairstyle: HAIRSTYLES[prev].id });
+              }}
+              className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white text-[#8B5DAF] rounded-full p-1 transition-colors"
+              aria-label="Previous hairstyle"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
-            <div
-              ref={hairstyleScrollRef}
-              className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide w-[296px] mx-auto scroll-smooth snap-x snap-mandatory"
-              style={{ clipPath: 'none' }}
-            >
-              {[...HAIRSTYLES, ...HAIRSTYLES, ...HAIRSTYLES].map((style, index) => (
-                <button
-                  key={`${style.id}-${index}`}
-                  onClick={() => setCurrentDesign({ ...currentDesign, hairstyle: style.id })}
-                  className="group flex-shrink-0 rounded-2xl overflow-visible transition-all flex items-start justify-center snap-start bg-transparent"
-                  style={{ width: '200px', height: '200px' }}
+
+            <div className="flex items-center justify-center overflow-visible" style={{ height: '200px' }}>
+              <button
+                onClick={() => {
+                  const style = HAIRSTYLES[hairstyleIndex];
+                  setCurrentDesign({ ...currentDesign, hairstyle: style.id });
+                }}
+                className="group flex-shrink-0 rounded-2xl overflow-visible transition-all flex items-start justify-center bg-transparent"
+                style={{ width: '200px', height: '200px' }}
+              >
+                <div
+                  className="h-full w-full relative transition-transform duration-200 group-hover:scale-105"
+                  style={{ transform: 'translateY(50px)' }}
                 >
-                  <div className="h-full w-full relative group-hover:animate-wiggle" style={{ transform: 'translateY(50px)' }}>
-                    <img
-                      src={currentDesign.hairstyle === style.id ? style.selectedImage : style.image}
-                      alt={style.name}
-                      className="h-full w-auto object-contain object-top transition-transform hover:scale-110"
-                    />
-                    <img
-                      src={face1SVG}
-                      alt="face"
-                      className="absolute top-[42%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[18%] h-auto pointer-events-none"
-                    />
-                  </div>
-                </button>
-              ))}
+                  <img
+                    src={HAIRSTYLES[hairstyleIndex].image}
+                    alt={HAIRSTYLES[hairstyleIndex].name}
+                    className="h-full w-auto object-contain object-top"
+                  />
+                  <img
+                    src={face1SVG}
+                    alt="face"
+                    className="absolute top-[42%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[18%] h-auto pointer-events-none"
+                  />
+                </div>
+              </button>
             </div>
+
             <button
-              onClick={() => scroll(hairstyleScrollRef, 'right')}
-              className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white text-[#8B5DAF] rounded-full p-1 hover:opacity-100 transition-opacity"
-              aria-label="Scroll right"
+              onClick={() => {
+                const next = (hairstyleIndex + 1) % HAIRSTYLES.length;
+                setHairstyleIndex(next);
+                setCurrentDesign({ ...currentDesign, hairstyle: HAIRSTYLES[next].id });
+              }}
+              className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white text-[#8B5DAF] rounded-full p-1 transition-colors"
+              aria-label="Next hairstyle"
             >
               <ChevronRight className="w-5 h-5" />
             </button>
 
             <div
-              className="absolute bottom-2.5 left-0 right-0 h-12 rounded-full mx-8"
+              className="absolute bottom-2.5 left-0 right-0 h-12 rounded-full mx-8 flex items-center justify-center"
               style={{ backgroundColor: '#8B5DAF' }}
-            ></div>
+            >
+              <span className="text-white text-sm font-semibold tracking-wide">
+                Style {hairstyleIndex + 1}
+              </span>
+            </div>
           </div>
         </div>
 
