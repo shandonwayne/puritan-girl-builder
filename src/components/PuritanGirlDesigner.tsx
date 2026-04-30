@@ -255,7 +255,7 @@ export default function PuritanGirlDesigner() {
               >
                 <div
                   className="h-full w-full relative transition-transform duration-200 group-hover:scale-105"
-                  style={{ transform: 'translateY(50px)' }}
+                  style={{ transform: 'translateY(0px)' }}
                 >
                   <img
                     src={HAIRSTYLES[hairstyleIndex].image}
