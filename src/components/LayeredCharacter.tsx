@@ -114,7 +114,7 @@ const BOOTS_POSITIONS: Record<string, string> = {
   boots3: 'translate(21, 374)',
   boots4: 'translate(21, 400)',
   boots5: 'translate(21, 332)',
-  boots6: 'translate(21, 341)',
+  boots6: 'translate(21, 334)',
 };
 
 const lightenColor = (color: string, amount: number = 0.15): string => {
