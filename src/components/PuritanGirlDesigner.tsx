@@ -250,12 +250,12 @@ export default function PuritanGirlDesigner() {
                   const style = HAIRSTYLES[hairstyleIndex];
                   setCurrentDesign({ ...currentDesign, hairstyle: style.id });
                 }}
-                className="group flex-shrink-0 rounded-2xl overflow-visible transition-all flex items-start justify-center bg-transparent"
-                style={{ width: '200px', height: '150px' }}
+                className="group flex-shrink-0 rounded-2xl overflow-visible transition-all flex items-start justify-center bg-transparent mx-auto"
+                style={{ width: '215px', height: '150px' }}
               >
                 <div
                   className="h-full w-full relative transition-transform duration-200 group-hover:scale-105"
-                  style={{ transform: 'translateY(0px)' }}
+                  style={{ transform: 'translateY(15px)' }}
                 >
                   <img
                     src={HAIRSTYLES[hairstyleIndex].image}
