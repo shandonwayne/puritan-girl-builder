@@ -244,7 +244,7 @@ export default function PuritanGirlDesigner() {
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-xs font-bold text-white uppercase tracking-widest">Hair Style</h3>
           </div>
-          <div className="relative py-5 px-3 rounded-2xl overflow-hidden" style={{ backgroundColor: '#D8C3E6' }}>
+          <div className="relative py-5 px-3 rounded-2xl overflow-visible" style={{ backgroundColor: '#D8C3E6' }}>
             <button
               onClick={() => scroll(hairstyleScrollRef, 'left')}
               className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white text-[#8B5DAF] rounded-full p-1 hover:opacity-100 transition-opacity"
@@ -255,14 +255,16 @@ export default function PuritanGirlDesigner() {
             <div
               ref={hairstyleScrollRef}
               className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide w-[296px] mx-auto scroll-smooth snap-x snap-mandatory"
+              style={{ clipPath: 'none' }}
             >
               {[...HAIRSTYLES, ...HAIRSTYLES, ...HAIRSTYLES].map((style, index) => (
                 <button
                   key={`${style.id}-${index}`}
                   onClick={() => setCurrentDesign({ ...currentDesign, hairstyle: style.id })}
-                  className="group flex-shrink-0 w-36 h-36 rounded-2xl overflow-visible transition-all flex items-start justify-center pt-2 px-2 snap-start bg-transparent"
+                  className="group flex-shrink-0 rounded-2xl overflow-visible transition-all flex items-start justify-center snap-start bg-transparent"
+                  style={{ width: '200px', height: '200px' }}
                 >
-                  <div className="h-full w-auto relative group-hover:animate-wiggle">
+                  <div className="h-full w-full relative group-hover:animate-wiggle" style={{ transform: 'translateY(50px)' }}>
                     <img
                       src={currentDesign.hairstyle === style.id ? style.selectedImage : style.image}
                       alt={style.name}
