@@ -645,15 +645,12 @@ const LayeredCharacter = forwardRef<LayeredCharacterRef, LayeredCharacterProps>(
     if (bootsSVG && bootsStyle) {
       const bootsGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
       bootsGroup.setAttribute('transform', BOOTS_POSITIONS[bootsStyle] || 'translate(21, 371)');
-      const bootsContent = bootsSVG.querySelector('g');
-      if (bootsContent) {
-        bootsGroup.appendChild(bootsContent.cloneNode(true));
-      } else {
-        const children = Array.from(bootsSVG.children);
-        children.forEach(child => {
+      const children = Array.from(bootsSVG.children);
+      children.forEach(child => {
+        if (child.tagName.toLowerCase() !== 'defs') {
           bootsGroup.appendChild(child.cloneNode(true));
-        });
-      }
+        }
+      });
       wrapper.appendChild(bootsGroup);
     }
 
