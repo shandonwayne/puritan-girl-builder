@@ -3,7 +3,7 @@ import baseGirlSVG from '../assets/base-girl.svg';
 import hairstyle1SVG from '../assets/hairstyle-1.svg';
 import hairstyle2SVG from '../assets/hairstyle-2.svg';
 import hairstyle3SVG from '../assets/hairstyle-3.svg';
-import hairstyle4SVG from '../assets/hairstyle-4.svg';
+import hairstyle4SVG from '../assets/hairstyle-4 copy.svg';
 import hairstyle5SVG from '../assets/hairstyle-5.svg';
 import hairstyle6SVG from '../assets/hairstyle-6.svg';
 import hairstyle7SVG from '../assets/hairstyle-7.svg';
