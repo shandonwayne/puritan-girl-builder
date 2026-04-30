@@ -255,17 +255,12 @@ export default function PuritanGirlDesigner() {
               >
                 <div
                   className="h-full w-full relative transition-transform duration-200 group-hover:scale-105 flex justify-center"
-                  style={{ transform: 'translateY(5px)' }}
+                  style={{ transform: 'translateY(15px) scale(1.15)' }}
                 >
                   <img
                     src={HAIRSTYLES[hairstyleIndex].image}
                     alt={HAIRSTYLES[hairstyleIndex].name}
                     className="h-full w-auto object-contain object-top mx-auto"
-                  />
-                  <img
-                    src={face1SVG}
-                    alt="face"
-                    className="absolute top-[42%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[18%] h-auto pointer-events-none"
                   />
                 </div>
               </button>
