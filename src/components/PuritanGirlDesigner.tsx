@@ -244,14 +244,14 @@ export default function PuritanGirlDesigner() {
               <ChevronLeft className="w-5 h-5" />
             </button>
 
-            <div className="flex items-center justify-center overflow-visible" style={{ height: '200px' }}>
+            <div className="flex items-center justify-center overflow-visible" style={{ height: '150px' }}>
               <button
                 onClick={() => {
                   const style = HAIRSTYLES[hairstyleIndex];
                   setCurrentDesign({ ...currentDesign, hairstyle: style.id });
                 }}
                 className="group flex-shrink-0 rounded-2xl overflow-visible transition-all flex items-start justify-center bg-transparent"
-                style={{ width: '200px', height: '200px' }}
+                style={{ width: '200px', height: '150px' }}
               >
                 <div
                   className="h-full w-full relative transition-transform duration-200 group-hover:scale-105"
@@ -287,7 +287,7 @@ export default function PuritanGirlDesigner() {
               className="absolute bottom-2.5 left-0 right-0 h-12 rounded-full mx-8 flex items-center justify-center"
               style={{ backgroundColor: '#8B5DAF' }}
             >
-              <span className="text-white text-sm font-semibold tracking-wide">
+              <span className="text-white text-xs font-bold tracking-widest uppercase" style={{ opacity: 0.65 }}>
                 Style {hairstyleIndex + 1}
               </span>
             </div>
