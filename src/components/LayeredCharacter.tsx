@@ -57,11 +57,11 @@ const HAIRSTYLE_POSITIONS: Record<string, string> = {
   style1: 'translate(30, -18)',
   style2: 'translate(30, -18)',
   style3: 'translate(30, -18)',
-  style4: 'translate(8, -18)',
-  style5: 'translate(28, -18)',
-  style6: 'translate(-1, -18)',
-  style7: 'translate(-1, -45)',
-  style8: 'translate(30, -18)',
+  style4: 'translate(8, -19)',
+  style5: 'translate(1, -18)',
+  style6: 'translate(4, -19)',
+  style7: 'translate(33, -19)',
+  style8: 'translate(33, -19)',
 };
 
 const HAIRSTYLE_SCALES: Record<string, number> = {
@@ -71,7 +71,7 @@ const HAIRSTYLE_SCALES: Record<string, number> = {
   style4: 1.0,
   style5: 1.0,
   style6: 1.0,
-  style7: 0.78,
+  style7: 1.0,
   style8: 1.0,
 };
 
